@@ -9,8 +9,4 @@ We show and individually present essential elements necessary to implement an in
 
 We give instructions for the information system setup as well as usage instructions. Finally, we present a conclusion. 
 
-Keywords:
-domain – driven design, DDD, architecture, information system, object – oriented
-paradigm, object – relational mapping, test driven development, TDD, design
-patterns, dependency injection, inversion of control, NHibernate, .NET, ASP.NET
-MVC, SQL, housing, management
+**Keywords**: domain – driven design, DDD, architecture, information system, object – oriented paradigm, object – relational mapping, test driven development, TDD, design patterns, dependency injection, inversion of control, NHibernate, .NET, ASP.NET MVC, SQL, housing, management
