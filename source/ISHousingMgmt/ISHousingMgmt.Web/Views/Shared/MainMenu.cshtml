@@ -1,0 +1,36 @@
+﻿@model ISHousingMgmt.Web.Models.RolesModel
+		
+	   
+<div id="side-menu">
+	<h3 class="headerbar">@Html.ActionLink("Naslovnica", "index", "dashboard")</h3>
+	
+	@if (Model.IsInRole("buildingmanager")) {
+		<h3 class="headerbar">@Html.ActionLink("Upravitelj", "buildingmanager", "dashboard")</h3>
+		<ul>
+			<li>@Html.ActionLink("Izvođači radova", "contractors", "buildingmanager")</li>
+			<li>@Html.ActionLink("Računi", "bills", "buildingmanager")</li>
+		</ul>
+	}
+	
+	@if (Model.IsInRole("contractor")) {
+		<h3 class="headerbar">@Html.ActionLink("Izvođač radova", "contractor", "dashboard")</h3>
+		<ul>
+			<li>@Html.ActionLink("Kvarovi", "index", "contractor")</li>
+			<li>@Html.ActionLink("Računi", "bills", "contractor")</li>
+			<li>@Html.ActionLink("Usluge popravka", "repairservices", "contractor")</li>
+		</ul>
+	}
+	
+	@if (Model.IsInRole("Representative")) {
+		<h3 class="headerbar">@Html.ActionLink("Predstavnik suvlasnika", "representative", "dashboard")</h3>
+	}
+	
+	@if (Model.IsInRole("owner")) {
+		<h3 class="headerbar">@Html.ActionLink("Suvlasnik", "owner", "dashboard")</h3>
+		<ul>
+			<li>@Html.ActionLink("Moji računi", "bills", "owner")</li>
+		</ul>
+	}
+	
+
+</div>

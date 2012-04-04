@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8362C91D-A19F-4775-8910-A92AFE411FC3}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISHousingMgmt.Web</RootNamespace>
+    <AssemblyName>ISHousingMgmt.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\ISHousingMgmt\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=2.1.266.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.2.1.266\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernateProfiler.1.0.0.929\lib\Net40\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.0.0.15\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net40-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutoMapperBootstrapper.cs" />
+    <Compile Include="App_Start\NHibernateProfilerBootstrapper.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BuildingManagementController.cs" />
+    <Compile Include="Controllers\BuildingManagerController.cs" />
+    <Compile Include="Controllers\ContractorController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\FinancesController.cs" />
+    <Compile Include="Controllers\LegislatureController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Controllers\OwnerController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Exstensions\BusinessRulesExceptionExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\NavLinksGenerator.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Account\EditModel.cs" />
+    <Compile Include="Models\Account\LogInModel.cs" />
+    <Compile Include="Models\Account\RegisterContractorUserModel.cs" />
+    <Compile Include="Models\Account\RegisterManagerUserModel.cs" />
+    <Compile Include="Models\Account\RegisterOwnerUserModel.cs" />
+    <Compile Include="Models\Account\RegisterUserModel.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\ConfirmModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\CreateModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\DelegateRepairModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\DetailsModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\IndexModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\MaintenanceDetailModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\MaintenanceRequestModel.cs" />
+    <Compile Include="Models\BuildingMaintenance\RepairServiceModel.cs" />
+    <Compile Include="Models\BuildingManagement\AddBuildingManagerModel.cs" />
+    <Compile Include="Models\BuildingManagement\AddRepresentativeModel.cs" />
+    <Compile Include="Models\BuildingManagement\AdminJobsVotingDetailModel.cs" />
+    <Compile Include="Models\BuildingManagement\AdminJobsVotingListModel.cs" />
+    <Compile Include="Models\BuildingManagement\BuildingDetailModel.cs" />
+    <Compile Include="Models\BuildingManagement\BuildingListlModel.cs" />
+    <Compile Include="Models\BuildingManagement\ChangeReservCoefModel.cs" />
+    <Compile Include="Models\BuildingManagement\CreateVotingModel.cs" />
+    <Compile Include="Models\BuildingManagement\VoteModel.cs" />
+    <Compile Include="Models\BuildingManagement\VotingModel.cs" />
+    <Compile Include="Models\BuildingManagement\VotingsModel.cs" />
+    <Compile Include="Models\BuildingManager\BillModel.cs" />
+    <Compile Include="Models\BuildingManager\BillsModel.cs" />
+    <Compile Include="Models\BuildingManager\IssueBillModel.cs" />
+    <Compile Include="Models\Contractor\BillModel.cs" />
+    <Compile Include="Models\Contractor\BillsModel.cs" />
+    <Compile Include="Models\Contractor\FixModel.cs" />
+    <Compile Include="Models\Contractor\IndexModel.cs" />
+    <Compile Include="Models\Contractor\IssueBillModel.cs" />
+    <Compile Include="Models\Contractor\RepairServicesModel.cs" />
+    <Compile Include="Models\Dashboard\IndexModel.cs" />
+    <Compile Include="Models\Finances\BillItemModel.cs" />
+    <Compile Include="Models\Finances\BillMethodModel.cs" />
+    <Compile Include="Models\Finances\BillModel.cs" />
+    <Compile Include="Models\Finances\ReserveBillsModel.cs" />
+    <Compile Include="Models\Finances\ReserveMModel.cs" />
+    <Compile Include="Models\Finances\ReserveModel.cs" />
+    <Compile Include="Models\Finances\ReservePeriodsModel.cs" />
+    <Compile Include="Models\Legislature\ChangeOwnerModel.cs" />
+    <Compile Include="Models\LinksModel.cs" />
+    <Compile Include="Models\NavLink.cs" />
+    <Compile Include="Models\Owner\BillsModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\BuildingManagerModel.cs" />
+    <Compile Include="Models\BuildingManagement\BuildingModel.cs" />
+    <Compile Include="Models\BuildingManagement\CreateModel.cs" />
+    <Compile Include="Models\BuildingManagement\IndexModel.cs" />
+    <Compile Include="Models\BuildingManagement\VotingCreateModel.cs" />
+    <Compile Include="Models\BuildingManagement\VotingVoteModel.cs" />
+    <Compile Include="Models\CityModel.cs" />
+    <Compile Include="Models\Legislature\AddPartitionSpaceModel.cs" />
+    <Compile Include="Models\Legislature\CadastralParticleDetailModel.cs" />
+    <Compile Include="Models\Legislature\CadastreDetailModel.cs" />
+    <Compile Include="Models\Legislature\CadastreJsonModel.cs" />
+    <Compile Include="Models\Legislature\CreateLandRegistryModel.cs" />
+    <Compile Include="Models\Legislature\CreateModel.cs" />
+    <Compile Include="Models\Legislature\LandRegistryDetailModel.cs" />
+    <Compile Include="Models\Legislature\LandRegistryListModel.cs" />
+    <Compile Include="Models\Legislature\LandRegistryModel.cs" />
+    <Compile Include="Models\Legislature\PartitionSpaceCreateModel.cs" />
+    <Compile Include="Models\Legislature\PartitionSpaceDetailModel.cs" />
+    <Compile Include="Models\Legislature\PartitionSpaceListModel.cs" />
+    <Compile Include="Models\Legislature\PartitionSpaceModel.cs" />
+    <Compile Include="Models\Owner\ApartmentDetailModel.cs" />
+    <Compile Include="Models\Owner\ApartmentListModel.cs" />
+    <Compile Include="Models\Owner\ApartmentModel.cs" />
+    <Compile Include="Models\Owner\IndexModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\AddContractorsModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\BuildingMgmtContractorsModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\ContractorModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\LegalPersonModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\PersonIndexModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\PhysicalPersonModel.cs" />
+    <Compile Include="Models\PersonsAndRoles\PersonModel.cs" />
+    <Compile Include="Models\RolesModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <EmbeddedResource Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Public\css\960gs\960.css" />
+    <Content Include="Public\css\960gs\reset.css" />
+    <Content Include="Public\css\960gs\text.css" />
+    <Content Include="Public\css\printStyle.css" />
+    <Content Include="Public\css\style.css" />
+    <Content Include="Public\img\calendar.png" />
+    <Content Include="Public\img\printer.png" />
+    <Content Include="Public\js\globalization\globinfo\Globalization.hr-HR.js" />
+    <Content Include="Public\js\globalization\globinfo\jquery.glob.hr-HR.js" />
+    <Content Include="Public\js\globalization\jquery.global.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Public\css\Site.css" />
+    <Content Include="Public\css\themes\base\jquery-ui.css" />
+    <Content Include="Public\css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Public\css\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Public\css\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Public\css\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Public\css\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Public\css\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Public\css\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Public\js\jquery-1.4.4.js" />
+    <Content Include="Public\js\jquery-1.4.4.min.js" />
+    <Content Include="Public\js\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Public\js\jquery.unobtrusive-ajax.js" />
+    <Content Include="Public\js\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Public\js\jquery.validate.js" />
+    <Content Include="Public\js\jquery.validate.min.js" />
+    <Content Include="Public\js\jquery.validate.unobtrusive.js" />
+    <Content Include="Public\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Public\js\jquery.validate-vsdoc.js" />
+    <Content Include="Public\js\jquery-ui.js" />
+    <Content Include="Public\js\jquery-ui.min.js" />
+    <Content Include="Public\js\MicrosoftAjax.js" />
+    <Content Include="Public\js\MicrosoftAjax.debug.js" />
+    <Content Include="Public\js\MicrosoftMvcAjax.js" />
+    <Content Include="Public\js\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Public\js\MicrosoftMvcValidation.js" />
+    <Content Include="Public\js\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISHousingMgmt.Domain\ISHousingMgmt.Domain.csproj">
+      <Project>{28241EEF-267E-43FB-AFC2-18D140F2F566}</Project>
+      <Name>ISHousingMgmt.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISHousingMgmt.Infrastructure\ISHousingMgmt.Infrastructure.csproj">
+      <Project>{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}</Project>
+      <Name>ISHousingMgmt.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_3_6_3Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\LogIn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_12__3_9Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Dashboard\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SideMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_12Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\RegisterManager.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\RegisterContractor.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Legislature\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Legislature\LandRegistry.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Legislature\AddPartitionSpace.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Legislature\AddOwnedPartitionSpace.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Legislature\PartitionSpace.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\Building.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\CreateVoting.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\Vote.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\RegisterOwner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Public\js\globalization\jquery.validation.global.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\AddRepresentative.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Person\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManager\Contractors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManager\AddContractors.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Owner\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Owner\Apartment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\AddManager.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\ChangeReserveCoef.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\Voting.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManagement\Votings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\MainMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\OwnerSideMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\RepresentativeSideMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ManagerSideMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\DelegateRepair.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\Fix.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\Bills.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\Confirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\IssueBill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\Bill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Finances\Reserve.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Finances\Bill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Finances\ReservePeriods.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Finances\ReserveBills.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Owner\Bills.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Legislature\ChangeOwner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManager\Bills.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManager\IssueBill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BuildingManager\Bill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\RepairServices.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Finances\PrintBill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_PrintLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Contractor\PrintBill.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7287</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7287/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+</Project>

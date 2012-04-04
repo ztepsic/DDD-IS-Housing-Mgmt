@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.BuildingManagement">
+	<class name="AdministrationJobsVoting" table="AdministrationJobsVotings" schema="BuildingManagement" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<property name="AdministrationJobsType" access="nosetter.camelcase" not-null="true" />
+		<property name="Subject" access="nosetter.camelcase" not-null="true" />
+		<property name="Description" access="nosetter.camelcase" not-null="true" />
+		<property name="StartDateTime" access="field.camelcase" not-null="true" />
+		<property name="EndDateTime" access="field.camelcase" not-null="true" />
+		<property name="NumberOfOwners" access="nosetter.camelcase" not-null="true" />
+		<property name="IsFinished" access="nosetter.camelcase" not-null="true" />
+		<property name="IsAccepted" access="nosetter.camelcase" not-null="true" />
+
+		<many-to-one name="Building" class="Building" column="BuildingId" access="nosetter.camelcase" />
+
+		<set name="OwnerVotes" table="OwnerVotes" access="field.camelcase" schema="BuildingManagement">
+			<key column="AdminJobsVotingId" />
+			<composite-element class="OwnerVote">
+				<property name="Vote" access="nosetter.camelcase" not-null="true" />
+				<property name="ShareOfTotalOwnership" access="nosetter.camelcase" not-null="true" />
+				<nested-composite-element name="Owner" class="ISHousingMgmt.Domain.PersonsAndRoles.PersonSnapshot" access="nosetter.camelcase">
+					<property name="FullName" access="nosetter.camelcase" not-null="true" />
+					<property name="Oib" access="nosetter.camelcase" not-null="true" />
+					<nested-composite-element name="Address" class="ISHousingMgmt.Domain.Address, ISHousingMgmt.Domain" access="nosetter.camelcase">
+						<many-to-one name="City" column="CityId" class="ISHousingMgmt.Domain.City, ISHousingMgmt.Domain"
+									access="nosetter.camelcase" />
+						<property name="StreetAddress" access="nosetter.camelcase" />
+						<property name="StreetAddressNumber" access="nosetter.camelcase" />
+					</nested-composite-element>
+				</nested-composite-element>
+			</composite-element>
+		</set>
+
+	</class>
+</hibernate-mapping>

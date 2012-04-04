@@ -1,0 +1,87 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingMaintenance.CreateModel
+
+@{
+    ViewBag.Title = "Prijava kvara";
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true, "Stvaranje nove stambene zgrade nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+<fieldset>
+	<legend>Podaci o kvaru</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label"><strong>@Html.LabelFor(m => m.Building):</strong></div>
+			<div class="display-field">@Model.Building</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label"><strong>@Html.LabelFor(m => m.MaintenanceRequest.Location):</strong></div>
+			<div class="display-field">@Html.EditorFor(m => m.MaintenanceRequest.Location)</div>
+		</div>
+		<div class="clear"></div>
+
+		<p style="margin-top: 5px;">
+			@Html.ValidationMessageFor(m => m.Building)
+			@Html.ValidationMessageFor(m => m.MaintenanceRequest.Location)
+		</p>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.RepairService):</strong></div>
+		<div class="display-field">
+			@Html.DropDownListFor(m => m.RepairService, Model.RepairServices, "--Odaberi")
+			@Html.ValidationMessageFor(m => m.RepairService)
+		</div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label"><strong>@Html.LabelFor(m => m.MaintenanceRequest.Subject):</strong></div>
+			<div class="display-field">@Html.EditorFor(m => m.MaintenanceRequest.Subject)</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label"><strong>@Html.LabelFor(m => m.Urgency):</strong></div>
+			<div class="display-field">@Html.DropDownListFor(m => m.Urgency, Model.Urgencies, "--Odaberi")</div>
+		</div>
+		
+		<div class="clear"></div>
+
+		<p style="margin-top: 5px;">
+			@Html.ValidationMessageFor(m => m.MaintenanceRequest.Subject)
+			@Html.ValidationMessageFor(m => m.Urgency)
+		</p>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.MaintenanceRequest.Description):</strong></div>
+		<div class="display-field">
+			@Html.TextAreaFor(m => m.MaintenanceRequest.Description)
+			@Html.ValidationMessageFor(m => m.MaintenanceRequest.Description)
+		</div>
+	</div>
+
+    <p>
+        <input type="submit" value="Kreiraj" />
+    </p>
+</fieldset>
+}

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.Finances">
+	<class name="Reserve" table="Reserves" schema="Finances" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<property name="Money" access="nosetter.camelcase" not-null="true" />
+
+		<many-to-one name="Building" class="ISHousingMgmt.Domain.BuildingManagement.Building"
+								 column="BuildingId" access="nosetter.camelcase" unique="true" />
+
+		<!--<one-to-one name="Building" class="ISHousingMgmt.Domain.BuildingManagement.Building" property-ref="Reserve" 
+								access="nosetter.camelcase" /-->
+
+		<set name="reserveBills" access="field" cascade="save-update" inverse="true">
+			<key column="Reserve" />
+			<one-to-many class="Bill" />
+		</set>
+
+	</class>
+</hibernate-mapping>

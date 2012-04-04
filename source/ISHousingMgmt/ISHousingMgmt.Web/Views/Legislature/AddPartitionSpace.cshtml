@@ -1,0 +1,87 @@
+﻿@model ISHousingMgmt.Web.Models.Legislature.AddPartitionSpaceModel
+
+@{
+	ViewBag.Title = "Dodavanje zajedniče etaže u zemljišnu knjigu: " + Model.PartitionSpace.CadastralParticle.NumberOfCadastralParticle;
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("buildingmanager")){
+	 @Html.Partial("ManagerSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/jquery.global.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/globinfo/jquery.glob." + Culture + ".js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/jquery.validation.global.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function () {
+		$.global.preferCulture("@Culture");
+	});
+</script>
+
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true, "Dodavanje zajedničke etaže u zemljišnu knjigu nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+	<div>
+		<fieldset>
+			<legend>Podaci o zajedničkoj etaži</legend>
+			<div class="field float-left">
+				<div class="editor-label">@Html.LabelFor(m => m.PartitionSpace.RegistryNumber)</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.PartitionSpace.RegistryNumber)
+				</div>
+			</div>
+
+			<div class="field float-left">
+				<div class="editor-label">@Html.LabelFor(m => m.PartitionSpace.OrdinalNumber)</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.PartitionSpace.OrdinalNumber)
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.PartitionSpace.RegistryNumber)
+				@Html.ValidationMessageFor(m => m.PartitionSpace.OrdinalNumber)
+			</p>
+
+			<div class="field float-left">
+				<div class="editor-label">@Html.LabelFor(m => m.PartitionSpace.SurfaceArea) [m<sup>2</sup>]</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.PartitionSpace.SurfaceArea)
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.PartitionSpace.SurfaceArea)
+			</p>
+
+			<div class="field">
+				<div class="editor-label">@Html.LabelFor(m => m.PartitionSpace.Description)</div>
+				<div class="editor-field">
+					@Html.TextAreaFor(m => m.PartitionSpace.Description)
+				</div>
+			</div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.PartitionSpace.Description)
+			</p>
+
+		</fieldset>
+
+		<p>
+			<input type="submit" value="Dodaj" />
+		</p>
+
+	</div>	
+}

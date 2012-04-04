@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.BuildingManagement.AdministrationJobsVoting">
+    <Position X="1.25" Y="2" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EQCJABEQAAAwEIQAIICAAgCAAAAAABEABAIAAAwSCAA=</HashCode>
+      <FileName>BuildingManagement\AdministrationJobsVoting.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AdministrationJobsType" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="OwnerVotes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.BuildingManagement.OwnerVote">
+    <Position X="6" Y="4" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAGAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAIAAAABAAA=</HashCode>
+      <FileName>BuildingManagement\OwnerVote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.BuildingManagement.IAdminJobsVotingsRepository">
+    <Position X="1.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>BuildingManagement\IAdminJobsVotingsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ISHousingMgmt.Domain.BuildingManagement.AdministrationJobsType">
+    <Position X="6" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingManagement\AdministrationJobsType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,127 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingMaintenance.IndexModel
+
+@{
+    ViewBag.Title = "Kvarovi za zgradu: " + Model.Building.Address.ToString();
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+	@Html.ActionLink("Prijavi kvar", "create", new { controller = "maintenance", Id = Model.Building.Id })
+</p>
+
+<fieldset>
+	<legend>Novi kvarovi</legend>
+
+<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+@foreach (var maintenance in Model.NewMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "details", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>Kvarovi u obradi</legend>
+
+<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+@foreach (var maintenance in Model.ActiveMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "details", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>Kvarovi koji čekaju na potvrdu</legend>
+
+<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+@foreach (var maintenance in Model.InConfirmationMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "details", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>
+
+
+<fieldset>
+	<legend>Riješeni kvarovi</legend>
+	<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+	@foreach (var maintenance in Model.CompletedMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "details", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>

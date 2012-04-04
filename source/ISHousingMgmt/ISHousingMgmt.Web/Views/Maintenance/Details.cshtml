@@ -1,0 +1,173 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingMaintenance.DetailsModel
+
+@{
+	ViewBag.Title = "Kvar: " + Model.Maintenance.MaintenanceRequest.Subject;
+	var isManager = Model.CurrentRole == "buildingmanager";
+	var isContractor = Model.CurrentRole == "contractor";
+	var isRepresentative = Model.CurrentRole == "representative";
+}
+
+@section SideMenu {
+	@if (Model.CurrentRole.Equals("owner")) {
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+ } else if (Model.CurrentRole.Equals("buildingmanager")) {
+		@Html.Partial("ManagerSideMenu", Model.Links)
+ } else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+ } else {
+		@Html.Partial("MainMenu")
+ }
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (isManager && Model.Maintenance.Contractor == null) {
+	<p>
+		@Html.ActionLink("Delegiraj popravak kvara", "delegaterepair", new { Id = Model.Maintenance.Id })
+	</p>
+} else if (isContractor && Model.Maintenance.StatusOfMaintenance == ISHousingMgmt.Domain.BuildingMaintenance.StatusOfMaintenance.InProgress) {
+	<p>
+		@Html.ActionLink("Objavi da je rad na popravku završen", "fix", new { controller = "contractor", Id = Model.Maintenance.Id })
+	</p>
+} else if (isRepresentative && Model.Maintenance.StatusOfMaintenance == ISHousingMgmt.Domain.BuildingMaintenance.StatusOfMaintenance.InConfirmation) {
+	<p>
+		@Html.ActionLink("Potvrdi da je posao obavljen", "confirm", new { controller = "maintenance", Id = Model.Maintenance.Id })
+	</p>
+}
+
+<fieldset>
+	<legend>Podaci o prijavi kvara</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Zgrada:</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.Building.Address.ToString()</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Location):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Maintenance.MaintenanceRequest.Location)</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.DateTimeOfRequest):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.MaintenanceRequest.DateTimeOfRequest.ToShortDateString()</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.CompletitionDateTime):</strong></div>
+			<div class="display-field horizontal">
+				@if (Model.Maintenance.CompletitionDateTime.HasValue) {
+					<text>@Model.Maintenance.CompletitionDateTime.Value.ToShortDateString()</text>
+				}
+			 </div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 20px 0 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Submitter):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.MaintenanceRequest.Submitter.FullName</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.BuildingManager):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.BuildingManager.FullName</div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0 20px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.Contractor):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Maintenance.Contractor.FullName)</div>
+		</div>
+		
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.BillId):</strong></div>
+			<div class="display-field horizontal">
+				@if (Model.Maintenance.BillId > 0) {
+					@Html.ActionLink("Detalji", "bill", new { controller = "finances", Id = Model.Maintenance.BillId })
+				} else {
+					<text>račun nije formiran</text>
+				}
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0 20px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.StatusOfMaintenance):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.GetStatusOfMaintenanceName()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.Urgency):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.UrgencyName()</div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+	
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Subject):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Maintenance.MaintenanceRequest.Subject)</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.ServiceType):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.ServiceType.Name</div>
+		</div>
+		
+		<div class="clear"></div>
+
+	</div>
+	
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Description):</strong></div>
+		<div class="display-field">
+			@Html.DisplayFor(m => m.Maintenance.MaintenanceRequest.Description)
+		</div>
+	</div>
+
+</fieldset>
+
+<fieldset>
+	<legend>Detalji</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.Instructions):</strong></div>
+		<div class="display-field">
+			@(!string.IsNullOrEmpty(Model.Maintenance.Instructions) ? Model.Maintenance.Instructions : "nema")
+		</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.ContractorsConclusion):</strong></div>
+		<div class="display-field">
+			@(!string.IsNullOrEmpty(Model.Maintenance.ContractorsConclusion) ? Model.Maintenance.ContractorsConclusion : "nema")
+		</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRemarks):</strong></div>
+		@if (Model.Maintenance.MaintenanceRemarks.Count() > 0) {
+			<dl>
+			@foreach (var remark in Model.Maintenance.MaintenanceRemarks) {
+				<dt>@remark.RemarkDateTime.ToString("dd.MM.yyyy., hh:mm:ss")</dt>
+				<dd>@remark.Remark</dd>
+   }
+			</dl>
+  } else {
+			<text>nema</text>
+		}
+	</div>
+
+</fieldset>

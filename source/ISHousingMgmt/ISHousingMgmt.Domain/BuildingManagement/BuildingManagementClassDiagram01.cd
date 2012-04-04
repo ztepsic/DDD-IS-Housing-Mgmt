@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.BuildingManagement.Building">
+    <Position X="1" Y="1" Width="3" />
+    <AssociationLine Name="Reserve" Type="ISHousingMgmt.Domain.Finances.Reserve" FixedFromPoint="true">
+      <Path>
+        <Point X="4" Y="3.5" />
+        <Point X="5.5" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIABAACAAQAAgAAAABAAAAICAAACCAAIAAg=</HashCode>
+      <FileName>BuildingManagement\Building.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LandRegistry" />
+      <Property Name="Address" />
+      <Property Name="BuildingManager" />
+      <Property Name="RepresentativeOfPartOwners" />
+      <Property Name="Reserve" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Legislature.LandRegistry" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAhAoAgAQCAEAAAAAAAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Legislature\LandRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Address" Collapsed="true">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAMAAIACAAAABAAAAAAAAIAAAAAABA=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.PersonsAndRoles.BuildingManager" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAABAAAAAQAAAIABAAAAAAAAABAAAA=</HashCode>
+      <FileName>PersonsAndRoles\BuildingManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.PersonsAndRoles.Person" Collapsed="true">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAAEAAAYAAQAgAAAQAAAIQAAACAAAAAAAAEAA=</HashCode>
+      <FileName>PersonsAndRoles\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Finances.Reserve" Collapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAQABACAAAAAAAAEAAAAASAgAgAAAAAAAAAAAAAEAI=</HashCode>
+      <FileName>Finances\Reserve.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Building" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.BuildingManagement.IBuildingsRepository">
+    <Position X="1.25" Y="5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAEEAA=</HashCode>
+      <FileName>BuildingManagement\IBuildingsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

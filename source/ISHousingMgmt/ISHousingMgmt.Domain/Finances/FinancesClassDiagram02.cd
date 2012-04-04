@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.Finances.Reserve">
+    <Position X="1" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EEAQABACAAAAAAAAEAAAAASAgAgAAAAAAAAAAAAAEAI=</HashCode>
+      <FileName>Finances\Reserve.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="reserveBills" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Finances.ReserveBilling">
+    <Position X="1" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Finances\ReserveBilling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Finances.Bill" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAABCIAQBAwAEAAABDAAQgQgAAYAQICAAMCAAAIIAQ=</HashCode>
+      <FileName>Finances\Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.Finances.IReservesRepository" Collapsed="true">
+    <Position X="1" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Finances\IReservesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

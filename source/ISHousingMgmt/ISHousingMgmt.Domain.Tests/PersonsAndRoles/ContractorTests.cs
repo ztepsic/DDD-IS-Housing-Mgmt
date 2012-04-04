@@ -1,0 +1,75 @@
+﻿using System.Linq;
+using ISHousingMgmt.Domain.BuildingMaintenance;
+using ISHousingMgmt.Domain.PersonsAndRoles;
+using NUnit.Framework;
+
+namespace ISHousingMgmt.Domain.Tests.PersonsAndRoles {
+	[TestFixture]
+	class ContractorTests {
+
+		[Test]
+		public void Can_Create_Contractor() {
+			// Arrange
+			LegalPerson legalPerson = new LegalPerson("12345678901", "Mile d.o.o.");
+
+			// Act
+			Contractor contractor = new Contractor(legalPerson);
+
+			// Assert
+			Assert.IsNotNull(contractor);
+			Assert.AreEqual(legalPerson, contractor.LegalPerson);
+			Assert.IsFalse(contractor.RepairServices.Any());
+		}
+
+		[Test]
+		public void Can_Add_Services_To_Contractor() {
+			// Arrange
+			LegalPerson legalPerson = new LegalPerson("12345678901", "Mile d.o.o.");
+
+			RepairService repairService1 = new RepairService("Ličenje");
+			RepairService repairService2 = new RepairService("vodovodne cijevi");
+			RepairService[] repairServices = new RepairService[] {
+				repairService1, 
+				repairService2
+			};
+
+			
+			// Act
+			Contractor contractor = new Contractor(legalPerson, repairServices);
+			RepairService repairService3 = new RepairService("parketi");
+			contractor.AddRepairService(repairService3);
+
+			// Assert
+			Assert.AreEqual(3, contractor.RepairServices.Count);
+			Assert.AreEqual(repairService1, contractor.RepairServices.ElementAt(0));
+			Assert.AreEqual(repairService2, contractor.RepairServices.ElementAt(1));
+			Assert.AreEqual(repairService3, contractor.RepairServices.ElementAt(2));
+		}
+
+		[Test]
+		public void Can_Remove_Service_From_Contractor() {
+			// Arrange
+			LegalPerson legalPerson = new LegalPerson("12345678901", "Mile d.o.o.");
+
+			RepairService repairService1 = new RepairService("Ličenje");
+			RepairService repairService2 = new RepairService("vodovodne cijevi");
+			RepairService repairService3 = new RepairService("parketi");
+			RepairService[] repairServices = new RepairService[] {
+				repairService1, 
+				repairService2,
+				repairService3
+			};
+
+			Contractor contractor = new Contractor(legalPerson, repairServices);
+
+			// Act
+			contractor.RemoveRepairService(repairService2);
+
+			// Assert
+			Assert.AreEqual(2, contractor.RepairServices.Count);
+			Assert.AreEqual(repairService1, contractor.RepairServices.ElementAt(0));
+			Assert.AreEqual(repairService3, contractor.RepairServices.ElementAt(1));
+		}
+
+	}
+}

@@ -1,0 +1,44 @@
+﻿@model ISHousingMgmt.Web.Models.RolesModel
+		   
+<div id="side-menu">
+	<ul>
+		<li><a href="/">Početna</a></li>
+	</ul>
+	@if (Model.IsInRole("owner")) {
+		<h3>Suvlasnik</h3>
+		<ul>
+			<li class="selected">@Html.ActionLink("Početna", "owner", "dashboard")</li>
+			<li>@Html.ActionLink("Moji stanovi", "index", "owner")</li>
+			<li>@Html.ActionLink("Moji kvarovi", "index", "maintenance")</li>
+			<li><a href="/">Moji računi</a></li>
+		</ul>	
+	}
+
+	@if (Model.IsInRole("Representative")) {
+		<h3 class="headerbar">Predstavnik suvlasnika</h3>
+		<ul>
+			<li>@Html.ActionLink("Zgrade", "index", "buildingmanagement")</li>
+			<li>@Html.ActionLink("Kvarovi", "index", "maintenance")</li>
+			<li><a href="/">Računi</a></li>
+		</ul>
+	}
+
+	@if (Model.IsInRole("buildingmanager")) {
+		<h3 class="headerbar">Upravitelj</h3>
+		<ul>
+			<li>@Html.ActionLink("Zgrade", "index", "buildingmanagement")</li>
+			<li>@Html.ActionLink("Izvođači radova", "contractors", "buildingManager")</li>
+			<li>@Html.ActionLink("Kvarovi", "index", "maintenance")</li>
+			<li><a href="/">Računi</a></li>
+		</ul>
+	}
+
+	@if (Model.IsInRole("contractor")) {
+		<h3 class="headerbar">Izvođač radova</h3>
+		<ul>
+			<li><a href="/">Kvarovi</a></li>
+			<li><a href="/">Računi</a></li>	
+		</ul>
+	}
+
+</div>

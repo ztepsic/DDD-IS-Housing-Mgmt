@@ -1,0 +1,252 @@
+﻿@model ISHousingMgmt.Web.Models.Legislature.ChangeOwnerModel
+
+@{
+	ViewBag.Title = "Promjena vlasnika vlasničke etaže";
+}
+
+@section SideMenu {
+	@if (Model.CurrentRole.Equals("buildingmanager")) {
+	 @Html.Partial("ManagerSideMenu", Model.Links)
+ } else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+ } else {
+		@Html.Partial("MainMenu")
+ }
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/jquery.global.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/globinfo/jquery.glob." + Culture + ".js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/jquery.validation.global.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function () {
+		$.global.preferCulture("@Culture");
+	});
+</script>
+
+<script type="text/javascript">
+	$(function () {
+		$("#submit").click(function (event) {
+			$("#NewOwner_Name").removeAttr("disabled");
+			$("#NewOwner_Surname").removeAttr("disabled");
+			$("#NewOwner_Address_StreetAddress").removeAttr("disabled");
+			$("#NewOwner_Address_StreetAddressNumber").removeAttr("disabled");
+			$("#NewOwner_Address_City_Id").removeAttr("disabled");
+		});
+
+		var personExists = false;
+		$("#NewOwner_Oib").change(function (event) {
+			var oib = $(this).val();
+			$.ajax({
+			  type: "POST",
+			  url: "@Url.Action("exists", new { controller = "person" })",
+			  data: {oib:oib},
+			  success: function(data){
+				if(data != null){
+					$("#NewOwner_Name").attr("disabled","disabled");
+					$("#NewOwner_Surname").attr("disabled","disabled");
+					$("#NewOwner_Address_StreetAddress").attr("disabled","disabled");
+					$("#NewOwner_Address_StreetAddressNumber").attr("disabled","disabled");
+					$("#NewOwner_Address_City_Id").attr("disabled","disabled");
+
+					$("#NewOwner_Name").val(data.Name);
+					$("#NewOwner_Surname").val(data.Surname);
+					$("#NewOwner_Address_StreetAddress").val(data.Address.StreetAddress);
+					$("#NewOwner_Address_StreetAddressNumber").val(data.Address.StreetAddressNumber);
+					$("#NewOwner_Address_City_Id").val(data.Address.City.Id);
+
+					$(".notice").remove();
+					$("#oib").before('<div class="notice">Osoba sa istim OIB-om već postoji. Ukoliko zadržite takav OIB zadržati će se podaci već upisani u sustavu.</div>');
+					personExists = true;
+
+				} else {
+					$("#NewOwner_Name").removeAttr("disabled");
+					$("#NewOwner_Surname").removeAttr("disabled");
+					$("#NewOwner_Address_StreetAddress").removeAttr("disabled");
+					$("#NewOwner_Address_StreetAddressNumber").removeAttr("disabled");
+					$("#NewOwner_Address_City_Id").removeAttr("disabled");
+
+					if(personExists == true){
+						personExists = false;
+						$("#NewOwner_Name").val("");
+						$("#NewOwner_Surname").val("");
+						$("#NewOwner_Address_StreetAddress").val("");
+						$("#NewOwner_Address_StreetAddressNumber").val("");
+						$("#NewOwner_Address_City_Id").val("");
+					}
+					
+
+					$(".notice").remove();
+				}
+
+			  },
+			  dataType: "json"
+			});
+		});
+	});
+</script>
+<fieldset>
+    <legend>Posjedovnica</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.CadastralParticle.NumberOfCadastralParticle):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.CadastralParticle.NumberOfCadastralParticle)</div>
+		</div>
+
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>Katastar:</strong></div>
+			<div class="display-field horizontal">
+				@{
+	var cadastre = string.Format("{0} ({1}), {2}", Model.PartitionSpace.CadastralParticle.Cadastre.CadastralDistrict,
+		Model.PartitionSpace.CadastralParticle.Cadastre.Mbr, Model.PartitionSpace.CadastralParticle.Cadastre.City.Name);
+				}
+				@cadastre
+			</div>
+		</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.CadastralParticle.SurfaceArea):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.CadastralParticle.SurfaceArea) m<sup>2</sup></div>
+	</div>
+
+	<div>
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.CadastralParticle.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.CadastralParticle.Description)</div>
+	</div>
+
+</fieldset>
+
+<fieldset>
+    <legend>Vlastovnica</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.RegistryNumber):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.RegistryNumber)</div>
+		</div>
+
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.OrdinalNumber)</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.OrdinalNumber)</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.SurfaceArea):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.SurfaceArea) m<sup>2</sup></div>
+		</div>
+
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.ShareOfTotalOwnership)</strong></div>
+			<div class="display-field horizontal">@Model.PartitionSpace.ShareOfTotalOwnership.ToString("0.0000")</div>
+		</div>
+		
+		<div class="clear"></div>
+		
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.Description)</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.Owner):</strong></div>
+		<div class="display-field horizontal">
+			@(string.Format("{0} (OIB: {1}),  {2}", Model.PartitionSpace.Owner.FullName, Model.PartitionSpace.Owner.Oib, Model.PartitionSpace.Owner.Address.ToString()))
+		</div>
+	</div>
+	
+</fieldset>
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true, "Promjena vlasnika vlasničke etaže nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+	<fieldset>
+			<legend>Podaci o novom vlasniku</legend>
+			<div class="field float-left">
+				<div class="editor-label">
+					@Html.LabelFor(m => m.NewOwner.Name)
+					</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.NewOwner.Name)
+				</div>
+			</div>
+
+			<div class="field float-left">
+				<div class="editor-label">@Html.LabelFor(m => m.NewOwner.Surname)<sup>*</sup></div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.NewOwner.Surname)<br />
+					<small>*popunjavaju samo fizičke osobe</small>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.NewOwner.Name)
+				@Html.ValidationMessageFor(m => m.NewOwner.Surname)
+			</p>
+
+			<div id="oib" class="field float-left">
+				<div class="editor-label">@Html.LabelFor(m => m.NewOwner.Oib)</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.NewOwner.Oib)
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.NewOwner.Oib)
+			</p>
+
+			<div class="field float-left">
+				<div class="editor-label">
+					@Html.LabelFor(m => m.NewOwner.Address.StreetAddress)
+				</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.NewOwner.Address.StreetAddress)
+				</div>
+			</div>
+
+			<div class="field float-left">
+			<div class="editor-label">
+					@Html.LabelFor(m => m.NewOwner.Address.StreetAddressNumber)
+				</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.NewOwner.Address.StreetAddressNumber)
+				</div>
+			</div>
+
+			<div class="field float-left">
+				<div class="editor-label">
+						@Html.LabelFor(m => m.NewOwner.Address.City)
+					</div>
+					<div class="editor-field">
+						@Html.DropDownListFor(m => m.NewOwner.Address.City.Id, Model.NewOwner.Address.Cities, "--Odaberi")
+					</div>
+			</div>
+
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.NewOwner.Address.StreetAddress)
+				@Html.ValidationMessageFor(m => m.NewOwner.Address.StreetAddressNumber)
+				@Html.ValidationMessageFor(m => m.NewOwner.Address.City)
+			</p>
+
+		</fieldset>
+
+		<p>
+			<input id="submit" type="submit" value="Dodaj" />
+		</p>
+}

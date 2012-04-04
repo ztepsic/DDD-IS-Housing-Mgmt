@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.ClearPassCoder" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAQAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\ClearPassCoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.EncryptionPassCoder" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAQAAAACA=</HashCode>
+      <FileName>MembershipAndRoles\EncryptionPassCoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.HashAlgorithmFactory">
+    <Position X="3.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\HashAlgorithmFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.HashPassCoder" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAQAAAAAAAAAAAAAAIAAAAAQAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\HashPassCoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.NHibernateMembershipProvider">
+    <Position X="7.25" Y="0.5" Width="3.75" />
+    <Members>
+      <Property Name="ApplicationName" Hidden="true" />
+      <Method Name="getConfigValue" Hidden="true" />
+      <Method Name="getPasswordFormat" Hidden="true" />
+      <Property Name="PasswordCoder" Hidden="true" />
+      <Property Name="PasswordFormat" Hidden="true" />
+      <Property Name="PasswordStrengthRegularExpression" Hidden="true" />
+      <Method Name="setConfigurationProperties" Hidden="true" />
+      <Method Name="setPasswordCoder" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ASRAEAGBASAMgQyMlYAEAYIQBQNAAAMTPAEGAEnAQAQ=</HashCode>
+      <FileName>MembershipAndRoles\NHibernateMembershipProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.NHibernateMembershipUser">
+    <Position X="11.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAABAAAEACgIAAAAAAAABAAQAACEAAACAQAAAAQAAQA=</HashCode>
+      <FileName>MembershipAndRoles\NHibernateMembershipUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.NHibernateRoleProvider">
+    <Position X="14.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAEEAAwAAAEAAAAAAAABAAAAAAAAAIAAAAEACEQAAA=</HashCode>
+      <FileName>MembershipAndRoles\NHibernateRoleProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ISHousingMgmt.Infrastructure.MembershipAndRoles.HashAlgorithmImplementation">
+    <Position X="0.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAEAAAACAAAAoAAgAAAAAAACAAAAAAQAAQAABAAAA=</HashCode>
+      <FileName>MembershipAndRoles\HashAlgorithmFactory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

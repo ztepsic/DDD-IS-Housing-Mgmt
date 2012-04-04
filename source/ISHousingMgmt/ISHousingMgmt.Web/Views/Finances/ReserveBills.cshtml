@@ -1,0 +1,83 @@
+﻿@model ISHousingMgmt.Web.Models.Finances.ReserveBillsModel
+
+@{
+	ViewBag.Title = "Izdani računi pričuve " + Model.Date.ToString("MM. yyyy.") + " za zgradu: " + Model.Reserve.Building.Address.ToString();
+	var isManager = Model.CurrentRole == "buildingmanager";
+	var isRepresentative = Model.CurrentRole == "representative";
+}
+
+@section SideMenu {
+ @if (Model.CurrentRole.Equals("buildingmanager")) {
+		@Html.Partial("ManagerSideMenu", Model.Links)
+ } else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+ } else {
+		@Html.Partial("MainMenu")
+ }
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+	<legend>Računi</legend>
+
+		<div style="margin: 10px 0;">
+			<div class="display-label"><strong>Nenaplaćeni računi:</strong></div>
+			<table>
+				<tr>
+					<th>Broj računa</th>
+					<th>Poziv na broj</th>
+					<th>Za</th>
+					<th>Iznos</th>
+					<th>Iznos+PDV</th>
+					<th>Plaćeno</th>
+					@if (isManager) {
+						<th>Akcija</th>
+					}
+				</tr>
+				@foreach (var bill in Model.UnpaidBills) {
+					<tr>
+						<td>
+							@Html.ActionLink(bill.Id.ToString(), "bill", new { Id = bill.Id })
+						</td>
+						<td>@bill.ReferenceNumber</td>
+						<td>@bill.To.FullName</td>
+						<td>@Html.DisplayFor(m => bill.TotalAmount) kn</td>
+						<td>@Html.DisplayFor(m => bill.TotalAmountWithTax) kn</td>
+						<td>@(bill.IsPaid ? "Da" : "Ne")</td>
+						@if (isManager) {
+						<td>
+							@Html.ActionLink("Potvrdi naplatu", "paybill", new { Id = bill.Id })
+						</td>
+	  }
+					</tr>
+	}
+			</table>
+		</div>
+
+		<div style="margin: 10px 0;">
+			<div class="display-label"><strong>Naplaćeni računi:</strong></div>
+			<table>
+				<tr>
+					<th>Broj računa</th>
+					<th>Poziv na broj</th>
+					<th>Za</th>
+					<th>Iznos</th>
+					<th>Iznos+PDV</th>
+					<th>Plaćeno</th>
+				</tr>
+				@foreach (var bill in Model.PaidBills) {
+					<tr>
+						<td>@Html.ActionLink(bill.Id.ToString(), "bill", new { Id = bill.Id })</td>
+						<td>@bill.ReferenceNumber</td>
+						<td>@bill.To.FullName</td>
+						<td>@Html.DisplayFor(m => bill.TotalAmount) kn</td>
+						<td>@Html.DisplayFor(m => bill.TotalAmountWithTax) kn</td>
+						<td>@(bill.IsPaid ? "Da" : "Ne")</td>
+					</tr>
+	}
+			</table>
+		</div>
+
+
+</fieldset>

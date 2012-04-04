@@ -1,0 +1,6 @@
+﻿@if(Request.IsAuthenticated) {
+    <text>Dobrodošli <b>@Context.User.Identity.Name</b>!
+	[ @Html.ActionLink("Uredi", "edit", "account") ]
+    [ @Html.ActionLink("Odjava", "logoff", "account") ]
+	</text>
+}

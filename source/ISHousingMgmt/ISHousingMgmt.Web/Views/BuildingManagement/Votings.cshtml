@@ -1,0 +1,50 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingManagement.VotingsModel
+
+@{
+    ViewBag.Title = "Zgrada: " + Model.Building;
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.IsRepresentative) {
+	@Html.ActionLink("Kreiraj novi posao uprave", "createvoting", new { Id = Model.BuidlingId })
+}
+<fieldset>
+		<legend>Rad uprave:</legend>
+	<table>
+		<tr>
+			<th>Tema</th>
+			<th>Vrsta</th>
+			<th>Početak</th>
+			<th>Kraj</th>
+			<th>Glasalo</th>
+			<th>Završeno</th>
+			<th>Prihvaćeno</th>
+		</tr>
+	
+		@foreach (var voting in Model.Votings) {
+		<tr>
+			<td>@Html.ActionLink(voting.Subject, "voting", new { Id = voting.Id })</td>
+			<td>@voting.GetAdministrationJobsTypeName()</td>
+			<td>@voting.StartDateTime.ToShortDateString()</td>
+			<td>@voting.EndDateTime.ToShortDateString()</td>
+			<td>@voting.Voted / @voting.NumberOfOwners</td>
+			<td>@(voting.IsFinished ? "Da" : "Ne")</td>
+			<td>@(voting.IsAccepted ? "Da" : "Ne")</td>
+		</tr>
+		}
+	</table>
+
+</fieldset>

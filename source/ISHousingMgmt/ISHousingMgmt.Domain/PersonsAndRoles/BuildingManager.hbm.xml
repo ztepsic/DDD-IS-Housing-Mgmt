@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.PersonsAndRoles">
+	<class name="BuildingManager" table="BuildingManagers" schema="PersonsAndRoles" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<many-to-one name="LegalPerson" class="LegalPerson" access="nosetter.camelcase" column="LegalPersonId"
+								 cascade="save-update" not-null="true" />
+		<set name="Contractors" table="BuildingManagerContractors" schema="PersonsAndRoles" access="field.camelcase">
+			<key column="BuildingManagerId" />
+			<many-to-many class="Contractor" column="ContractorId" />
+		</set>
+
+	</class>
+</hibernate-mapping>

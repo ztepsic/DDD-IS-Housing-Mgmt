@@ -1,0 +1,39 @@
+﻿@model ISHousingMgmt.Web.Models.PersonsAndRoles.BuildingMgmtContractorsModel
+
+@{
+    ViewBag.Title = "Izvođači radova";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Dodaj izvođače", "addcontractors")
+</p>
+<table>
+    <tr>
+        <th>Izvođač radova</th>
+		<th>Usluge</th>
+		<th>Akcija</th>
+	</tr>
+
+@foreach (var contractor in Model.Contractors) {
+    <tr>
+        <td>@contractor.LegalPerson.FullName</td>
+		<td>
+			<ul>
+			@foreach (var repairService in contractor.RepairServices) {
+				<li>@repairService.Name</li>
+			}				
+			</ul>
+		</td>
+		<td>
+			@Html.ActionLink("Ukloni", "removecontractor", new { Id = contractor.Id })
+		</td>
+    </tr>
+}
+
+</table>

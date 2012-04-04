@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.Legislature">
+	<class name="Cadastre" table="Cadastres" schema="Legislature">
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+		
+		<property name="CadastralDistrict" not-null="true"/>
+		<property name="Mbr" not-null="true" unique="true" />
+		<many-to-one name="City" class="ISHousingMgmt.Domain.City" column="CityId" />
+		
+	</class>
+</hibernate-mapping>

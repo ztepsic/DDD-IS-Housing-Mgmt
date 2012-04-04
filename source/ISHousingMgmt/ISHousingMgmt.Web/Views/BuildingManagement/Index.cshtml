@@ -1,0 +1,35 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingManagement.IndexModel
+
+@{
+    ViewBag.Title = "Stambene zgrade";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.IsInRole("buildingmanager")) {
+	@Html.ActionLink("Nova stambena zgrada", "create")
+}
+
+<table>
+	<tr>
+		<th>Zgrada</th>
+		<th>Opis</th>
+		<th>Površina [m<sup>2</sup>]</th>
+	</tr>
+	@foreach (var building in Model.Buildings) {
+		<tr>
+			<td>
+				@Html.ActionLink(building.Address.ToString(),
+					"building",
+					new { id = building.Id })
+			</td>
+			<td>@building.Description</td>
+			<td>@Html.DisplayFor(m => building.SurfaceArea)</td>
+		</tr>
+	}
+</table>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.BuildingManagement">
+	<class name="Building" table="Buildings" schema="BuildingManagement" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<component name="Address" class="ISHousingMgmt.Domain.Address, ISHousingMgmt.Domain">
+			<many-to-one name="City" column="CityId" class="ISHousingMgmt.Domain.City, ISHousingMgmt.Domain"
+									  access="nosetter.camelcase" fetch="join" />
+			<property name="StreetAddress" access="nosetter.camelcase" />
+			<property name="StreetAddressNumber" access="nosetter.camelcase" />
+		</component>
+		
+		<many-to-one name="BuildingManager" class="ISHousingMgmt.Domain.PersonsAndRoles.BuildingManager" column="BuildingManagerId"
+								 access="nosetter.camelcase" />
+
+		<many-to-one name="RepresentativeOfPartOwners" class="ISHousingMgmt.Domain.PersonsAndRoles.Person" column="ReprePersonId" />
+		<many-to-one name="LandRegistry" class="ISHousingMgmt.Domain.Legislature.LandRegistry" column="LandRegistryId"
+								 access="nosetter.camelcase" cascade="save-update" fetch="join" />
+
+		<!--<many-to-one name="Reserve" class="ISHousingMgmt.Domain.Finances.Reserve" column="ReserveId" access="nosetter.camelcase"
+								 cascade="all" unique="true" />-->
+
+		<one-to-one name="Reserve" class="ISHousingMgmt.Domain.Finances.Reserve" property-ref="Building"
+						access="nosetter.camelcase" cascade="all" />
+
+		<property name="ReserveCoefficient" access="nosetter.camelcase" />
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain"
+									 namespace="ISHousingMgmt.Domain.MembershipAndRoles">
+	<subclass name="HousingMgmtUser" extends="User" discriminator-value="HousingMgmtUser">
+		<many-to-one name="Person" class="ISHousingMgmt.Domain.PersonsAndRoles.Person"
+								 column="PersonId"
+								 cascade="save-update"
+								 unique="true"
+								 />
+	</subclass>
+</hibernate-mapping>

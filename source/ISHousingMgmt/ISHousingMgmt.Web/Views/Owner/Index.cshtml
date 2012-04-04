@@ -1,0 +1,30 @@
+﻿@model ISHousingMgmt.Web.Models.Owner.IndexModel
+
+@{
+    ViewBag.Title = "Moji stanovi";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+	<tr>
+		<th>Stan u zgradi</th>
+		<th>Opis stana</th>
+		<th>Površina stana [m<sup>2</sup>]</th>
+	</tr>
+	@foreach (var apartment in Model.Apartments) {
+		<tr>
+			<td>
+				@Html.ActionLink(apartment.Building.Address.ToString(), "apartment", new { controller ="owner", id = apartment.PartitionSpace.Id})
+			</td>
+			<td>
+				@apartment.PartitionSpace.Description
+			</td>
+			<td>@Html.DisplayFor(m => apartment.PartitionSpace.SurfaceArea)</td>
+		</tr>
+	}
+</table>

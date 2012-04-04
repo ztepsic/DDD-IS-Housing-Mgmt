@@ -1,0 +1,99 @@
+﻿@model ISHousingMgmt.Web.Models.Contractor.BillModel
+
+@{
+	ViewBag.Title = "Račun: " + Model.Bill.Id;
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<ul class="links">
+	<li>@Html.ActionLink("Ispiši", "printbill", new { Id = Model.Bill.Id }) <img alt="Ispiši" title="Ispiši" src="@Url.Content("~/Public/img/printer.png")" /></li>
+</ul>
+<div class="clear"></div>
+
+<fieldset>
+	<legend>Podaci o računu</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.From):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Bill.From.FullName)</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.To):</strong></div>
+			<div class="display-field horizontal">@(Model.Bill.To == null ? Model.Bill.BuildingName : Model.Bill.To.FullName)</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.DateTimeIssued):</strong></div>
+			<div class="display-field horizontal">@Model.Bill.DateTimeIssued.ToShortDateString()</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.PaidDateTime):</strong></div>
+			<div class="display-field horizontal">@(Model.Bill.PaidDateTime.HasValue ? Model.Bill.PaidDateTime.Value.ToShortDateString() : "nije uplaćeno")</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.ReferenceNumber):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Bill.ReferenceNumber)</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.IsPaid):</strong></div>
+			<div class="display-field horizontal">@(Model.Bill.IsPaid ? "Da" : "Ne")</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Bill.PaymentDescription):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.Bill.PaymentDescription)</div>
+	</div>
+
+	<table class="bill">                
+		<tr>
+			<th scope="col">&#160;</th>
+			<th scope="col">Količina</th>
+			<th scope="col">Cijena</th>
+			<th scope="col">Iznos</th>
+		</tr>
+        
+		@foreach (var billItem in Model.Bill.BillItems) {
+		<tr>
+			<th scope="row">@billItem.Description</th>
+				<td>@billItem.Quantity kom.</td>
+				<td>@Html.DisplayFor(m => billItem.Price) kn</td>
+				<td>@Html.DisplayFor(m => billItem.TotalAmount) kn</td>
+		</tr>
+		}
+		                
+	</table>
+
+	<table class="summary float-right">                
+		<tr>
+			<th scope="row">@Html.LabelFor(m => m.Bill.TotalAmount):</th>
+			<td>@Html.DisplayFor(m => m.Bill.TotalAmount) kn</td>
+		</tr>
+		<tr>
+			<th scope="row">PDV (@(Model.Bill.Tax)%):</th>
+			<td>@Html.DisplayFor(m => m.Bill.TaxAmount) kn</td>
+		</tr>
+		<tr>
+			<th scope="row">@Html.LabelFor(m => m.Bill.TotalAmountWithTax)</th>
+			<td>@Html.DisplayFor(m => m.Bill.TotalAmountWithTax) kn</td>
+		</tr>
+	</table
+
+</fieldset>

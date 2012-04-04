@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BuildingManagement.DomainModel.Legislature.AbstractCadastralParticle">
+    <Position X="3.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAgAAYAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Legislature\AbstractCadastralParticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Legislature.CadastralParticle">
+    <Position X="4.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAACAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\CadastralParticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Legislature.CadastralParticleComposite">
+    <Position X="0.75" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAAAAwAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\CadastralParticleComposite.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CadastralParticles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Legislature.Cadastre">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Legislature\Cadastre.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="City" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Legislature.LandRegistry">
+    <Position X="7" Y="1.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhAIAgAQCAEAAAAACAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Legislature\LandRegistry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cadastre" />
+      <Property Name="CadastralParticle" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PartitionSpaces" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Legislature.PartitionSpace" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gACAABCAAAAwAAAAAAAAAAAAAACAAAAAAAACAIAAAAA=</HashCode>
+      <FileName>Legislature\PartitionSpace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.City" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BuildingManagement.DomainModel.Legislature.ICadastresRepository" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\ICadastresRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BuildingManagement.DomainModel.Legislature.ILandRegistriesRepository" Collapsed="true">
+    <Position X="7" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\ILandRegistriesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BuildingManagement.DomainModel.Legislature.IPartitionSpace">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAwAAAAAAAAAAAAAACAAAAAAAACAIAAAAA=</HashCode>
+      <FileName>Legislature\IPartitionSpace.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BuildingManagement.DomainModel.Legislature.IPartitionSpacesRepository" Collapsed="true">
+    <Position X="12" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\IPartitionSpacesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

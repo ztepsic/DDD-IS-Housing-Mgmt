@@ -1,0 +1,43 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingManagement.AddRepresentativeModel
+
+@{
+    ViewBag.Title = "Kandidati za predstavnika suvlasnika zgrade " + Model.Building;
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.ValidationSummary(true, "Postavljanje novog predstavnika suvlasnika nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+
+<table>
+    <tr>
+        <th>Puno ime suvlasnika</th>
+        <th>OIB</th>
+        <th>Akcija</th>
+    </tr>
+
+@foreach (var item in Model.Owners) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+        <td>@Html.DisplayFor(modelItem => item.Oib)</td>
+        <td>
+			@using (Html.BeginForm()) {
+				@Html.Hidden("Oib", item.Oib)
+				<input type="submit" value="Postavi za predstavnika" />
+			}
+		</td>
+    </tr>
+}
+
+</table>

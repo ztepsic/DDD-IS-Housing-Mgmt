@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISHousingMgmt.Web", "ISHousingMgmt.Web\ISHousingMgmt.Web.csproj", "{8362C91D-A19F-4775-8910-A92AFE411FC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISHousingMgmt.Web.Tests", "ISHousingMgmt.Web.Tests\ISHousingMgmt.Web.Tests.csproj", "{185284E7-E98F-4565-B386-F93821175BBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISHousingMgmt.Domain", "ISHousingMgmt.Domain\ISHousingMgmt.Domain.csproj", "{28241EEF-267E-43FB-AFC2-18D140F2F566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISHousingMgmt.Domain.Tests", "ISHousingMgmt.Domain.Tests\ISHousingMgmt.Domain.Tests.csproj", "{2BEECED5-F4E7-455F-91A0-F9187F6A82C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISHousingMgmt.Infrastructure", "ISHousingMgmt.Infrastructure\ISHousingMgmt.Infrastructure.csproj", "{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISHousingMgmt.Infrastructure.Tests", "ISHousingMgmt.Infrastructure.Tests\ISHousingMgmt.Infrastructure.Tests.csproj", "{5C67DCD5-DDA7-4737-A70D-01871657F8D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shema", "Shema", "{9158F559-88D5-4F0C-91CA-BB3C420450B0}"
+	ProjectSection(SolutionItems) = preProject
+		packages\NHibernate.3.1.0.4000\lib\Net35\nhibernate-configuration.xsd = packages\NHibernate.3.1.0.4000\lib\Net35\nhibernate-configuration.xsd
+		packages\NHibernate.3.1.0.4000\lib\Net35\nhibernate-mapping.xsd = packages\NHibernate.3.1.0.4000\lib\Net35\nhibernate-mapping.xsd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3784A466-A097-423A-91E6-BCA4C57ED76E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8362C91D-A19F-4775-8910-A92AFE411FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8362C91D-A19F-4775-8910-A92AFE411FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8362C91D-A19F-4775-8910-A92AFE411FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8362C91D-A19F-4775-8910-A92AFE411FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185284E7-E98F-4565-B386-F93821175BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185284E7-E98F-4565-B386-F93821175BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185284E7-E98F-4565-B386-F93821175BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185284E7-E98F-4565-B386-F93821175BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28241EEF-267E-43FB-AFC2-18D140F2F566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28241EEF-267E-43FB-AFC2-18D140F2F566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28241EEF-267E-43FB-AFC2-18D140F2F566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28241EEF-267E-43FB-AFC2-18D140F2F566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BEECED5-F4E7-455F-91A0-F9187F6A82C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BEECED5-F4E7-455F-91A0-F9187F6A82C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BEECED5-F4E7-455F-91A0-F9187F6A82C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BEECED5-F4E7-455F-91A0-F9187F6A82C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C67DCD5-DDA7-4737-A70D-01871657F8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C67DCD5-DDA7-4737-A70D-01871657F8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C67DCD5-DDA7-4737-A70D-01871657F8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C67DCD5-DDA7-4737-A70D-01871657F8D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

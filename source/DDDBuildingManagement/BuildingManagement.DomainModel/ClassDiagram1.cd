@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BuildingManagement.DomainModel.Building" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAgAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Cadastre">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Cadastre.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="City" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.City">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.LandRegistry">
+    <Position X="17.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhAAAAAQAAAAAAAACAAAIAAAABAAAAAQAAAAAAI=</HashCode>
+      <FileName>LandRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PartitionSpace">
+    <Position X="4.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PartitionSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Address">
+    <Position X="2.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAIACAAAABAAAAAAAAIAAAAAgAA=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="City" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Telephone">
+    <Position X="1" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAggAAAIAAAAAAQAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Telephone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PhysicalPerson">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PhysicalPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.LegalPerson">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LegalPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.BuildingManager">
+    <Position X="4.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Contractor">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Owner" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAgAAAAQCAAAAAgYAAACAAAABgAAA=</HashCode>
+      <FileName>Owner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.AbstractCadastralParticle">
+    <Position X="11" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>AbstractCadastralParticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.CadastralParticle">
+    <Position X="9.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAACAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CadastralParticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.CadastralParticleComposite">
+    <Position X="12.25" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAAAAwAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>CadastralParticleComposite.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="cadastralParticles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.OwnedPartitionSpace">
+    <Position X="4.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAASAAAAAgAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OwnedPartitionSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Apartment">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEAAAAAAAAAAAAAAABAAAAAQAAAAA=</HashCode>
+      <FileName>Apartment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

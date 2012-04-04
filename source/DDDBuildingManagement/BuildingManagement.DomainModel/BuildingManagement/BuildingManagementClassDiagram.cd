@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BuildingManagement.DomainModel.BuildingManagement.Apartment">
+    <Position X="8" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>BuildingManagement\Apartment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.BuildingManagement.Building">
+    <Position X="3.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAABACCAAAIggAACAAAAAIACAAAACAAIAAg=</HashCode>
+      <FileName>BuildingManagement\Building.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BuildingManager" />
+      <Property Name="RepresentativeOfPartOwners" />
+      <Property Name="Address" />
+      <Property Name="LandRegistry" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Apartments" />
+      <Property Name="Rooms" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.BuildingManagement.Room">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAgCAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingManagement\Room.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RoomType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.BuildingManagement.RoomType">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>BuildingManagement\RoomType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.BuildingManager" Collapsed="true">
+    <Position X="1.25" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAABAAAACQAAAIABAAAAAAAAABAAAA=</HashCode>
+      <FileName>PersonsAndRoles\BuildingManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.Person" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAAAAAAYAAwAhAAAAAAAIQAIACAAAAAAAAEAA=</HashCode>
+      <FileName>PersonsAndRoles\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Address" Collapsed="true">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAIACAAAABAAAAAAAAIAAAAAgAA=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Legislature.LandRegistry" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAhAIAgAQCAEAAAAACAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Legislature\LandRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BuildingManagement.DomainModel.BuildingManagement.IBuildingsRepository">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingManagement\IBuildingsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

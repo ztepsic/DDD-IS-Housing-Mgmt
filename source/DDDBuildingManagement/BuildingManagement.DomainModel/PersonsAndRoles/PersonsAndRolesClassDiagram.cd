@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.BuildingManager">
+    <Position X="7.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAABAAAACQAAAIABAAAAAAAAABAAAA=</HashCode>
+      <FileName>PersonsAndRoles\BuildingManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LegalPerson" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Contractors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.Contractor">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAACQAAAAAAAAAAAAAAAQAAAAAAAAEABAAAA=</HashCode>
+      <FileName>PersonsAndRoles\Contractor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LegalPerson" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="RepairServices" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.LegalPerson" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAABAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\LegalPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.LegalPersonSnapshot">
+    <Position X="4" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\LegalPersonSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.Person" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAAAAAAYAAwAhAAAAAAAIQAIACAAAAAAAAEAA=</HashCode>
+      <FileName>PersonsAndRoles\Person.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Address" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Telephones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.PersonSnapshot">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAABAAIAAwADAAAAAAAIAAIACAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\PersonSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.PhysicalPerson" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\PhysicalPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.PersonsAndRoles.Telephone" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAggAAAIAAAAAAQAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Telephone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.Address" Collapsed="true">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAIACAAAABAAAAAAAAIAAAAAgAA=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildingManagement.DomainModel.BuildingMaintenance.RepairService" Collapsed="true">
+    <Position X="11.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\RepairService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BuildingManagement.DomainModel.PersonsAndRoles.IPersonsRepository" Collapsed="true">
+    <Position X="1" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAQCAACAAAAgAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\IPersonsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BuildingManagement.DomainModel.PersonsAndRoles.IBuildingManagersRepository" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\IBuildingManagersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BuildingManagement.DomainModel.PersonsAndRoles.IContractorsRepository" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\IContractorsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

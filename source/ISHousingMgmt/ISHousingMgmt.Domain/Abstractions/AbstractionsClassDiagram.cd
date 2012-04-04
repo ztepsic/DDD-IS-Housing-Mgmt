@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.Abstractions.DomainObject">
+    <Position X="18.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAgAAAgAAgAAAAAIQAAAAAAECAAiA=</HashCode>
+      <FileName>Abstractions\DomainObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Abstractions.ValueObject">
+    <Position X="22" Y="0.5" Width="2.75" />
+    <InheritanceLine Type="ISHousingMgmt.Domain.Abstractions.DomainObject" FixedFromPoint="true">
+      <Path>
+        <Point X="20.75" Y="2.063" />
+        <Point X="21.125" Y="2.063" />
+        <Point X="21.125" Y="1.116" />
+        <Point X="22" Y="1.116" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\ValueObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Abstractions.BusinessKeyOfEntityAttribute" Collapsed="true">
+    <Position X="22" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Abstractions.Entity" Collapsed="true">
+    <Position X="25" Y="3" Width="2.25" />
+    <InheritanceLine Type="ISHousingMgmt.Domain.Abstractions.Entity&lt;TId&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="24.25" Y="3.312" />
+        <Point X="25" Y="3.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Abstractions.Entity&lt;TId&gt;">
+    <Position X="22" Y="2" Width="2.25" />
+    <InheritanceLine Type="ISHousingMgmt.Domain.Abstractions.DomainObject" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="20.75" Y="2.063" />
+        <Point X="21.125" Y="2.063" />
+        <Point X="21.125" Y="3.312" />
+        <Point X="22" Y="3.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAgAAAAAIAAAAgAAAAAAAE=</HashCode>
+      <FileName>Abstractions\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Abstractions.NHibernateEntity">
+    <Position X="25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\NHibernateEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Abstractions.NHibernateEntity&lt;TId&gt;">
+    <Position X="25" Y="1.25" Width="2.25" />
+    <InheritanceLine Type="ISHousingMgmt.Domain.Abstractions.Entity&lt;TId&gt;" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="24.25" Y="3.312" />
+        <Point X="24.538" Y="3.312" />
+        <Point X="24.538" Y="2.108" />
+        <Point X="25" Y="2.108" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\NHibernateEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.Abstractions.ICrudRepository&lt;TEntity&gt;">
+    <Position X="29.75" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\ICrudRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.Abstractions.ICrudRepository&lt;TEntity, TId&gt;">
+    <Position X="29.5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\ICrudRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.Abstractions.IReadOnlyRepository&lt;TEntity&gt;">
+    <Position X="32.5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstractions\IReadOnlyRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.Abstractions.IReadOnlyRepository&lt;TEntity, TId&gt;">
+    <Position X="31" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Abstractions\IReadOnlyRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

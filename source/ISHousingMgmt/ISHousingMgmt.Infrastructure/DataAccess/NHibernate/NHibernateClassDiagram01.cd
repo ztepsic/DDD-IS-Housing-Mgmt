@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.NHibernateRepository" Collapsed="true">
+    <Position X="3" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\NHibernate\NHibernateRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.NHibernateReadOnlyRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\NHibernate\NHibernateReadOnlyRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.NHibernateReadOnlyRepository&lt;TEntity, TId&gt;" Collapsed="true">
+    <Position X="2.25" Y="2.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>DataAccess\NHibernate\NHibernateReadOnlyRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.NHibernateCrudRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4.5" Y="5.25" Width="2.75" />
+    <InheritanceLine Type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.NHibernateCrudRepository&lt;TEntity, TId&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="5.875" Y="4.441" />
+        <Point X="5.875" Y="5.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\NHibernate\NHibernateCrudRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.NHibernateCrudRepository&lt;TEntity, TId&gt;" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\NHibernate\NHibernateCrudRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

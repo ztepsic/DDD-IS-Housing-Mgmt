@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.BuildingMaintenance">
+	<class name="Maintenance" table="Maintenances" schema="BuildingMaintenance" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<property name="Urgency" access="nosetter.camelcase" not-null="true" />
+		<property name="StatusOfMaintenance" access="nosetter.camelcase" not-null="true" />
+		<property name="Instructions" />
+		<property name="CompletitionDateTime" access="nosetter.camelcase" />
+		<property name="ContractorsConclusion" />
+
+		<many-to-one name="ServiceType" access="nosetter.camelcase" not-null="true" />
+		<many-to-one name="Building" class="ISHousingMgmt.Domain.BuildingManagement.Building" 
+								 column="BuildingId" access="nosetter.camelcase" not-null="true" />
+		<many-to-one name="Bill" class="ISHousingMgmt.Domain.Finances.Bill" access="nosetter.camelcase" cascade="save-update" />
+
+		<component name="Contractor" class="ISHousingMgmt.Domain.PersonsAndRoles.PersonSnapshot" access="nosetter.camelcase">
+			<property name="FullName" column="ContractorFullName" access="nosetter.camelcase"/>
+			<property name="Oib" column="ContractorOib" access="nosetter.camelcase" />
+			<component name="Address" class="ISHousingMgmt.Domain.Address, ISHousingMgmt.Domain" access="nosetter.camelcase">
+				<many-to-one name="City" column="ContractorCityId" class="ISHousingMgmt.Domain.City, ISHousingMgmt.Domain"
+							access="nosetter.camelcase" />
+				<property name="StreetAddress" column="ContractorStreetAddress" access="nosetter.camelcase" />
+				<property name="StreetAddressNumber" column="ContractorStreetAddressNumber" access="nosetter.camelcase" />
+			</component>
+		</component>
+
+		<component name="MaintenanceRequest" class="MaintenanceRequest" access="nosetter.camelcase">
+			<component name="Submitter" class="ISHousingMgmt.Domain.PersonsAndRoles.PersonSnapshot" access="nosetter.camelcase">
+				<property name="FullName" column="SubmitterFullName" access="nosetter.camelcase" not-null="true" />
+				<property name="Oib" column="SubmitterOib" access="nosetter.camelcase" not-null="true" />
+				<component name="Address" class="ISHousingMgmt.Domain.Address, ISHousingMgmt.Domain" access="nosetter.camelcase">
+					<many-to-one name="City" column="SubmitterCityId" class="ISHousingMgmt.Domain.City, ISHousingMgmt.Domain"
+								access="nosetter.camelcase" />
+					<property name="StreetAddress" column="SubmitterStreetAddress" access="nosetter.camelcase" />
+					<property name="StreetAddressNumber" column="SubmitterStreetAddressNumber" access="nosetter.camelcase" />
+				</component>
+			</component>
+
+			<property name="Subject" access="nosetter.camelcase" not-null="true" />
+			<property name="Description" access="nosetter.camelcase" not-null="true" />
+			<property name="Location" access="nosetter.camelcase" not-null="true" />
+			<property name="DateTimeOfRequest" access="nosetter.camelcase" not-null="true" />
+			
+		</component>
+
+		<idbag name="MaintenanceRemarks" access="field.camelcase" schema="BuildingMaintenance">
+			<collection-id column="Id" type="Int32">
+				<generator class="native" />
+			</collection-id>
+			<key column="MaintenanceId" />
+			<composite-element class="MaintenanceRemark">
+				<property name="Remark" access="nosetter.camelcase" not-null="true" />
+				<property name="RemarkDateTime" access="nosetter.camelcase" not-null="true" />
+			</composite-element>
+		</idbag>
+
+	</class>
+</hibernate-mapping>

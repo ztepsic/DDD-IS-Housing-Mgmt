@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.MembershipAndRoles.Role">
+    <Position X="8.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.MembershipAndRoles.User">
+    <Position X="5.5" Y="2.75" Width="3.25" />
+    <Members>
+      <Method Name="calculatePasswordWithSalt" Hidden="true" />
+      <Property Name="Comment" Hidden="true" />
+      <Property Name="FailedPasswordAnswerAttemptCount" Hidden="true" />
+      <Property Name="FailedPasswordAnswerAttemptWindowStart" Hidden="true" />
+      <Property Name="FailedPasswordAttemptCount" Hidden="true" />
+      <Property Name="FailedPasswordAttemptWindowStart" Hidden="true" />
+      <Method Name="generatePasswordSalt" Hidden="true" />
+      <Method Name="generateRandomString" Hidden="true" />
+      <Property Name="IsLockedOut" Hidden="true" />
+      <Property Name="LastActivityDate" Hidden="true" />
+      <Property Name="LastLockoutDate" Hidden="true" />
+      <Property Name="LastLoginDate" Hidden="true" />
+      <Property Name="LastPasswordChangedDate" Hidden="true" />
+      <Property Name="PasswordFormat" Hidden="true" />
+      <Property Name="PasswordQuestion" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>UAAIQEoFAChMxEiowAACAMAQxgCsFALChQESAjUgAEQ=</HashCode>
+      <FileName>MembershipAndRoles\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.MembershipAndRoles.HousingMgmtUser">
+    <Position X="9.25" Y="2.75" Width="2.5" />
+    <InheritanceLine Type="ISHousingMgmt.Domain.MembershipAndRoles.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.688" Y="2.75" />
+        <Point X="6.688" Y="2.45" />
+        <Point X="10.438" Y="2.45" />
+        <Point X="10.438" Y="2.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\HousingMgmtUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.MembershipAndRoles.IRolesRepository">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>MembershipAndRoles\IRolesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.MembershipAndRoles.IUsersRepository">
+    <Position X="9.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAgIAAAAAQQAAAAAAAFAAAAAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\IUsersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.MembershipAndRoles.IPasswordCoder">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAQAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\IPasswordCoder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.MembershipAndRoles.IHousingMgmtUsersRepository">
+    <Position X="9.25" Y="8" Width="2.5" />
+    <InheritanceLine Type="ISHousingMgmt.Domain.MembershipAndRoles.IUsersRepository" FixedToPoint="true">
+      <Path>
+        <Point X="10.25" Y="7.387" />
+        <Point X="10.25" Y="8" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MembershipAndRoles\IHousingMgmtUsersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ISHousingMgmt.Domain.MembershipAndRoles.PasswordFormat">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBAAAA=</HashCode>
+      <FileName>MembershipAndRoles\IPasswordCoder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

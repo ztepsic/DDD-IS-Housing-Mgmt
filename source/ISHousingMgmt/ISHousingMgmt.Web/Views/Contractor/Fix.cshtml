@@ -1,0 +1,134 @@
+﻿@model ISHousingMgmt.Web.Models.Contractor.FixModel
+
+@{
+	ViewBag.Title = "Sanacija za kvar: " + Model.Maintenance.MaintenanceRequest.Subject;
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<fieldset>
+	<legend>Podaci o prijavi kvara</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Zgrada:</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.Building.Address.ToString()</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Location):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Maintenance.MaintenanceRequest.Location)</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.DateTimeOfRequest):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.MaintenanceRequest.DateTimeOfRequest.ToShortDateString()</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.CompletitionDateTime):</strong></div>
+			<div class="display-field horizontal">
+				@if (Model.Maintenance.CompletitionDateTime.HasValue) {
+					<text>@Model.Maintenance.CompletitionDateTime.Value.ToShortDateString()</text>
+				}
+			 </div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 20px 0 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Submitter):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.MaintenanceRequest.Submitter.FullName</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.BuildingManager):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.BuildingManager.FullName</div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0 20px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.Contractor):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Maintenance.Contractor.FullName)</div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0 20px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.StatusOfMaintenance):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.GetStatusOfMaintenanceName()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.Urgency):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.UrgencyName()</div>
+		</div>
+		
+		<div class="clear"></div>
+	</div>
+	
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Subject):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Maintenance.MaintenanceRequest.Subject)</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Maintenance.ServiceType):</strong></div>
+			<div class="display-field horizontal">@Model.Maintenance.ServiceType.Name</div>
+		</div>
+		
+		<div class="clear"></div>
+
+	</div>
+	
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.MaintenanceRequest.Description):</strong></div>
+		<div class="display-field">
+			@Html.DisplayFor(m => m.Maintenance.MaintenanceRequest.Description)
+		</div>
+	</div>
+
+</fieldset>
+
+<fieldset>
+	<legend>Detalji</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.Instructions):</strong></div>
+		<div class="display-field">@Html.DisplayFor(m => m.Maintenance.Instructions)</div>
+	</div>
+
+</fieldset>
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true, "Delegiranje popravka izvođaču radova nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+<fieldset>
+	<legend>Objašnjenje sanacije kvara</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>@Html.LabelFor(m => m.Maintenance.ContractorsConclusion):</strong></div>
+		<div class="display-field">@Html.TextAreaFor(m => m.Maintenance.ContractorsConclusion)</div>
+	</div>
+
+	<p>
+        <input type="submit" value="Završi" />
+    </p>
+
+</fieldset>
+}

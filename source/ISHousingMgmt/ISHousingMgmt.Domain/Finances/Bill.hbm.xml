@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.Finances">
+	<class name="Bill" table="Bills" schema="Finances" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<property name="DateTimeIssued" access="nosetter.camelcase" not-null="true" />
+		<property name="Tax" access="nosetter.camelcase" not-null="true" />
+		<property name="ReferenceNumber" not-null="true" />
+		<property name="IsPaid" access="nosetter.camelcase" not-null="true" />
+		<property name="PaidDateTime" access="nosetter.camelcase" />
+		<property name="PaymentDescription" access="nosetter.camelcase" not-null="true" />
+		<many-to-one name="Reserve" class="Reserve" access="nosetter.camelcase" not-null="true" />
+
+		<component name="From" class="ISHousingMgmt.Domain.PersonsAndRoles.LegalPersonSnapshot" access="nosetter.camelcase">
+			<property name="FullName" column="FromFullName" access="nosetter.camelcase"/>
+			<property name="Oib" column="FromOib" access="nosetter.camelcase" />
+			<property name="NumberOfBankAccount" column="FromNumberOfBankAccount" access="nosetter.camelcase" />
+			<component name="Address" class="ISHousingMgmt.Domain.Address, ISHousingMgmt.Domain" access="nosetter.camelcase">
+				<many-to-one name="City" column="FromCityId" class="ISHousingMgmt.Domain.City, ISHousingMgmt.Domain"
+							access="nosetter.camelcase" />
+				<property name="StreetAddress" column="FromStreetAddress" access="nosetter.camelcase" />
+				<property name="StreetAddressNumber" column="FromStreetAddressNumber" access="nosetter.camelcase" />
+			</component>
+		</component>
+		
+		<component name="To" class="ISHousingMgmt.Domain.PersonsAndRoles.PersonSnapshot" access="nosetter.camelcase">
+			<property name="FullName" column="ToFullName" access="nosetter.camelcase"/>
+			<property name="Oib" column="ToOib" access="nosetter.camelcase" />
+			<component name="Address" class="ISHousingMgmt.Domain.Address, ISHousingMgmt.Domain" access="nosetter.camelcase">
+				<many-to-one name="City" column="ToCityId" class="ISHousingMgmt.Domain.City, ISHousingMgmt.Domain"
+							access="nosetter.camelcase" />
+				<property name="StreetAddress" column="ToStreetAddress" access="nosetter.camelcase" />
+				<property name="StreetAddressNumber" column="ToStreetAddressNumber" access="nosetter.camelcase" />
+			</component>
+		</component>
+
+		<idbag name="BillItems" table="BillItems" access="field.camelcase" schema="Finances">
+			<collection-id column="Id" type="Int32">
+				<generator class="native" />
+			</collection-id>
+			<key column="BillId" />
+			<composite-element class="BillItem">
+				<property name="Quantity" access="nosetter.camelcase" not-null="true" />
+				<property name="Price" access="nosetter.camelcase" not-null="true" />
+				<property name="Description" access="nosetter.camelcase" not-null="true" />
+			</composite-element>
+		</idbag>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+﻿@model ISHousingMgmt.Web.Models.Contractor.RepairServicesModel
+
+@{
+    ViewBag.Title = "Usluge popravaka";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+	<legend>Raspoložive usluge</legend>
+
+<table>
+	<tr>
+		<th>Naziv</th>
+		<th>Akcija</th>
+	</tr>
+@foreach (var service in Model.AvaliableServices) {
+	<tr>
+		<td>
+			@Html.DisplayFor(m => service.Name)
+		</td>
+		<td>
+			@Html.ActionLink("Dodaj", "addrepairservice", new { Id = service.Id})
+		</td>
+	</tr>
+}
+</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>Podržane usluge</legend>
+	<table>
+	<tr>
+		<th>Naziv</th>
+		<th>Akcija</th>
+	</tr>
+@foreach (var service in Model.Contractor.RepairServices) {
+	<tr>
+		<td>
+			@Html.DisplayFor(m => service.Name)
+		</td>
+		<td>
+			@Html.ActionLink("Ukloni", "removerepairservice", new { Id = service.Id})
+		</td>
+	</tr>
+}
+</table>
+
+</fieldset>

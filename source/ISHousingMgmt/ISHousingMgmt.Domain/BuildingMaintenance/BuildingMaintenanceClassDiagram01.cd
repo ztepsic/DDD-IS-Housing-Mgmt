@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.BuildingMaintenance.Maintenance">
+    <Position X="5" Y="2.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAFIApAAgAiJACAAAAIBAIAAAIAYAACAEAIAAAACago=</HashCode>
+      <FileName>BuildingMaintenance\Maintenance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ServiceType" />
+      <Property Name="Urgency" />
+      <Property Name="StatusOfMaintenance" />
+      <Property Name="Building" />
+      <Property Name="MaintenanceRequest" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="MaintenanceRemarks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.BuildingMaintenance.MaintenanceRequest">
+    <Position X="0.75" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAgAAAAIIIAACCCAAAgCAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\MaintenanceRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.BuildingMaintenance.RepairService" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\RepairService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.BuildingMaintenance.MaintenanceRemark">
+    <Position X="0.75" Y="3.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAQA=</HashCode>
+      <FileName>BuildingMaintenance\MaintenanceRemark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.BuildingManagement.Building" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIABAACAAQAAgAAAABAAAAICAAACCAAIAAg=</HashCode>
+      <FileName>BuildingManagement\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.BuildingMaintenance.IRepairServicesRepository" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\IRepairServicesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.BuildingMaintenance.IMaintenancesRepository">
+    <Position X="5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAABAAAAAACBAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\IMaintenancesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ISHousingMgmt.Domain.BuildingMaintenance.StatusOfMaintenance" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\StatusOfMaintenance.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ISHousingMgmt.Domain.BuildingMaintenance.Urgency" Collapsed="true">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\Urgency.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,163 @@
+﻿@model ISHousingMgmt.Web.Models.Account.EditModel
+
+@{
+	ViewBag.Title = "Uređivanje korisničkih i osobnih podataka";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "Promjena podataka nije uspjela. Ispravite pogreške i pokušajte ponovno.")
+    <fieldset>
+        <legend>Korisnički podaci</legend>
+
+		<div style="margin: 10px 0;">
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.UserName):</strong></div>
+				<div class="display-field horizontal">@Html.DisplayFor(m => m.UserName)</div>
+			</div>
+
+			
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Email):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.Email)</div>
+			</div>
+			
+		
+
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.Email)
+			</p>
+
+		</div>
+
+		<div style="margin: 10px 0;">
+			
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Password):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.Password)</div>
+			</div>
+
+			
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.ConfirmPassword):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.ConfirmPassword)</div>
+			</div>		
+
+			<div class="clear"></div>
+
+			<div style="margin-top: 30px;">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.OldPassword):</strong></div>
+				<div class="display-field horizontal">
+					@Html.EditorFor(m => m.OldPassword)
+					@Html.ValidationMessageFor(m => m.OldPassword)
+				</div>
+			</div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.Password)
+				@Html.ValidationMessageFor(m => m.ConfirmPassword)
+			</p>
+
+		</div>
+        
+    </fieldset>
+	
+	<fieldset>
+        <legend>Osobni podaci</legend>
+
+		<div style="margin: 10px 0;">
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Name):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.Name)</div>
+			</div>
+
+			@if (!string.IsNullOrEmpty(Model.Surname)) {
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Surname):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.Surname)</div>
+			</div>
+			}
+		
+
+			<div class="clear"></div>
+
+			<p style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.Name)
+				@Html.ValidationMessageFor(m => m.Surname)
+			</p>
+
+		</div>
+
+		<div style="margin: 10px 0;">
+
+			<div class="field float-left">
+					<div class="editor-label horizontal">
+						<strong>@Html.LabelFor(m => m.Address.StreetAddress):</strong>
+					</div>
+					<div class="editor-field horizontal">
+						@Html.EditorFor(m => m.Address.StreetAddress)
+					</div>
+				</div>
+
+				<div class="field float-left">
+				<div class="editor-label horizontal">
+						<strong>@Html.LabelFor(m => m.Address.StreetAddressNumber):</strong>
+					</div>
+					<div class="editor-field horizontal">
+						@Html.TextBoxFor(m => m.Address.StreetAddressNumber, new { style = "width:50px" })
+					</div>
+				</div>
+
+				<div class="field float-left">
+					<div class="editor-label horizontal">
+							<strong>@Html.LabelFor(m => m.Address.City):</strong>
+						</div>
+						<div class="editor-field horizontal">
+							@Html.DropDownListFor(m => m.Address.City.Id, Model.Address.Cities, "--Odaberi")
+						</div>
+				</div>
+
+				<div class="clear"></div>
+
+				<p style="margin-top: 5px;">
+					@Html.ValidationMessageFor(m => m.Address.StreetAddress)
+					@Html.ValidationMessageFor(m => m.Address.StreetAddressNumber)
+					@Html.ValidationMessageFor(m => m.Address.City)
+				</p>
+
+		</div>
+
+		<div style="margin: 10px 0;">
+			
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.TelephoneNumber):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.TelephoneNumber)</div>
+			</div>
+
+			
+			<div class="two-column float-left">
+				<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.MobileNumber):</strong></div>
+				<div class="display-field horizontal">@Html.EditorFor(m => m.MobileNumber)</div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+        
+    </fieldset>
+	
+	<p>
+		<input type="submit" value="Spremi" />
+	</p>
+	
+}

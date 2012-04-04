@@ -1,0 +1,70 @@
+﻿@model ISHousingMgmt.Web.Models.PersonsAndRoles.PersonIndexModel
+
+@{
+    ViewBag.Title = Model.Person.FullName;
+	var isPhysicalPerson = !string.IsNullOrEmpty(Model.Person.Surname);
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("manager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>@(isPhysicalPerson ? "Podaci o fizičkoj osobi" : "Podaci o pravnoj osobi")</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Person.Name):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Person.Name)</div>
+		</div>
+
+		@if (isPhysicalPerson) {
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Person.Surname):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Person.Surname)</div>
+		</div>
+		}
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Person.Oib):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Person.Oib)</div>
+		</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Person.Address):</strong></div>
+			<div class="display-field horizontal">@Model.Person.Address.ToString()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Person.Telephones):</strong></div>
+			<div class="display-field horizontal">
+				<dl style="margin-left: 20px;">
+			@foreach (var telephone in Model.Person.Telephones) {
+	   			<dt class="horizontal">@telephone.NameOfTelephoneNumber:</dt>	
+				<dd class="horizontal">@telephone.TelephoneNumber</dd> <br />
+			}
+				</dl>
+			</div>
+			
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+</fieldset>

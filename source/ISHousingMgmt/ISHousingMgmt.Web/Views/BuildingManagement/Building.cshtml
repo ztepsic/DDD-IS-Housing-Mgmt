@@ -1,0 +1,211 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingManagement.BuildingModel
+
+@{
+    ViewBag.Title = "Zgrada: " + Model.Building.Address.ToString();
+	var isManager = Model.IsInRole("buildingmanager");
+	var isRepresentative = Model.IsInRole("representative");
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Podaci o zgradi</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.LandRegistry):</strong></div>
+			<div class="display-field horizontal">
+				@if (Model.Building.LandRegistry == null) {
+					@Html.ActionLink("Kreiraj zemljišnu knjigu", "create", new { controller = "legislature", buildingId = Model.Building.Id })
+				} else if (!Model.Building.LandRegistry.Locked) {
+					@Html.ActionLink("Dodaj etaže", "landregistry", new { controller = "legislature", Id = Model.Building.LandRegistry.Id })
+				} else {
+					@Html.ActionLink(Model.Building.LandRegistry.CadastralParticle.NumberOfCadastralParticle, "landregistry", new { controller = "legislature", Id = Model.Building.LandRegistry.Id })
+				}
+			</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Katastar:</strong></div>
+			<div class="display-field horizontal">
+			@{
+				var cadastre = string.Empty;
+				if(Model.Building.LandRegistry != null){
+					 cadastre = string.Format("{0} ({1}), {2}", Model.Building.LandRegistry.CadastralParticle.Cadastre.CadastralDistrict,
+					Model.Building.LandRegistry.CadastralParticle.Cadastre.Mbr, Model.Building.LandRegistry.CadastralParticle.Cadastre.City.Name);
+				}
+				
+			}
+			@cadastre
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Adresa:</strong></div>
+			<div class="display-field horizontal">@Model.Building.Address.ToString()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.LandRegistry.CadastralParticle.SurfaceArea):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Building.LandRegistry.CadastralParticle.SurfaceArea) m<sup>2</sup></div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.LandRegistry.CadastralParticle.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.Building.LandRegistry.CadastralParticle.Description)</div>
+	</div>
+
+    <div style="margin: 10px 0;">
+		
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.RepresentativeOfPartOwners):</strong></div>
+			<div class="display-field horizontal">
+				@if (Model.Building.RepresentativeOfPartOwners == null && Model.Building.LandRegistry != null && isManager) {
+					@Html.ActionLink("Postavi predstavnika", "addrepresentative", new { id = Model.Building.Id })
+				} else if (Model.Building.LandRegistry != null) {
+					@Html.ActionLink(Model.Building.RepresentativeOfPartOwners.FullName, "index", new { controller = "person", id = Model.Building.RepresentativeOfPartOwners.Id })
+					if (isManager) {
+						<text> @Html.ActionLink("[Uredi]", "addrepresentative", new { id = Model.Building.Id })</text>
+					}
+
+				}
+			</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.BuildingManagerLegalPerson):</strong></div>
+			<div class="display-field horizontal">
+				@Html.ActionLink(Model.Building.BuildingManagerLegalPerson.FullName, "index", new { controller = "person", id = Model.Building.BuildingManagerLegalPerson.Id })
+				@if (isRepresentative) {
+						<text> @Html.ActionLink("[Uredi]", "addmanager", new { id = Model.Building.Id })</text>
+					}
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		
+		<div  class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.ReserveCoefficient):</strong></div>
+			<div class="display-field horizontal">
+				@Html.DisplayFor(m => m.Building.ReserveCoefficient) kn/m<sup>2</sup>
+				@if (isRepresentative) {
+					<text> @Html.ActionLink("[Uredi]", "changereservecoef", new { id = Model.Building.Id })</text>
+				}
+			</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Building.ReserveMoney):</strong></div>
+			<div class="display-field horizontal">
+				@Html.DisplayFor(m => m.Building.ReserveMoney) kn
+				<text> @Html.ActionLink("[Detalji]", "reserve", new { controller="finances", id = Model.Building.Id })</text>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>Rad uprave:</strong></div>
+		@if (isRepresentative) {
+			@Html.ActionLink("Kreiraj novi posao uprave", "createvoting", new { Id = Model.Building.Id })
+		}
+		
+		<table>
+			<tr>
+				<th>Tema</th>
+				<th>Vrsta</th>
+				<th>Početak</th>
+				<th>Kraj</th>
+				<th>Glasalo</th>
+				<th>Završeno</th>
+				<th>Prihvaćeno</th>
+			</tr>
+	
+			@foreach (var voting in Model.Votings) {
+			<tr>
+				<td>@Html.ActionLink(voting.Subject, "voting", new { Id = voting.Id })</td>
+				<td>@voting.GetAdministrationJobsTypeName()</td>
+				<td>@voting.StartDateTime.ToShortDateString()</td>
+				<td>@voting.EndDateTime.ToShortDateString()</td>
+				<td>@voting.Voted / @voting.NumberOfOwners</td>
+				<td>@(voting.IsFinished ? "Da" : "Ne")</td>
+				<td>@(voting.IsAccepted ? "Da" : "Ne")</td>
+			</tr>
+			}
+		</table>
+
+		@if (Model.Votings.Count > 0) {
+			<text>@Html.ActionLink("Više ...", "votings", new { Id = Model.Building.Id})</text>
+		}		
+
+	</div>
+
+</fieldset>
+
+@if (Model.Building.LandRegistry != null) {
+<fieldset>
+    <legend>Prostorije i stanovi</legend>
+
+	<div class="display-label"><strong>Zajedničke etaže:</strong></div>
+	<table>
+		<tr>
+			<th>Etaža</th>
+			<th>Opis</th>
+			<th>Površina [m<sup>2</sup>]</th>
+		</tr>
+	
+	@foreach (var partitionSpaceListModel in Model.Building.LandRegistry.JointOwnershipPartitionSpaces) {
+		<tr>
+			<td>@Html.ActionLink(partitionSpaceListModel.OrdinalNumber.ToString(), "partitionspace", new { controller = "legislature", id = partitionSpaceListModel.Id })</td>
+			<td>@partitionSpaceListModel.Description</td>
+			<td>@partitionSpaceListModel.SurfaceArea.ToString("0,0.00")</td>
+		</tr>
+ }
+	</table>
+
+	<div class="display-label"><strong>Vlasničke etaže:</strong></div>
+	<table>
+		<tr>
+			<th>Etaža</th>
+			<th>Vlasnik</th>
+			<th>Opis</th>
+			<th>Površina [m<sup>2</sup>]</th>
+		</tr>
+	
+	@foreach (var partitionSpaceListModel in Model.Building.LandRegistry.OwnedPartitionSpaces) {
+		<tr>
+			<td>@Html.ActionLink(partitionSpaceListModel.OrdinalNumber.ToString(), "partitionspace", new { controller = "legislature", id = partitionSpaceListModel.Id })</td>
+			<td>@Html.ActionLink(partitionSpaceListModel.Owner.FullName, "index", new { controller = "person", id = partitionSpaceListModel.Owner.Id })</td>
+			<td>@partitionSpaceListModel.Description</td>
+			<td>@partitionSpaceListModel.SurfaceArea.ToString("0,0.00")</td>
+		</tr>
+ }
+	</table>
+
+</fieldset>
+}

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C67DCD5-DDA7-4737-A70D-01871657F8D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISHousingMgmt.Infrastructure.Tests</RootNamespace>
+    <AssemblyName>ISHousingMgmt.Infrastructure.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\ISHousingMgmt\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernateProfiler.1.0.0.929\lib\Net40\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.1.0.80.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.1.0.80.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\NHibernateProfilerBootstrapper.cs" />
+    <Compile Include="DataAccess\NHibernate\BaseFixture.cs" />
+    <Compile Include="DataAccess\NHibernate\NHibernateFixture.cs" />
+    <Compile Include="DataAccess\NHibernate\NHibernateSessionProvider.cs" />
+    <Compile Include="DataAccess\NHibernate\TestConnectionProvider.cs" />
+    <Compile Include="DataAccess\Repositories\BuildingMaintenance\MaintenancesNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\BuildingManagement\AdminJobsVotingsNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\BuildingManagement\BuildingsNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\BuildingMaintenance\RepairServicesNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\Finances\BillsNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\Finances\ReservesNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\Legislature\CadastresNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\Legislature\LandRegistriesNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\Legislature\PartitionSpacesNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\PersonsAndRoles\BuildingManagersNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\PersonsAndRoles\ContractorsNHRepositoryTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataAccess\Repositories\CityNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\MembershipAndRoles\UsersNHRepositoryTests.cs" />
+    <Compile Include="DataAccess\Repositories\PersonsAndRoles\PersonsNHRepositoryTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISHousingMgmt.Domain.Tests\ISHousingMgmt.Domain.Tests.csproj">
+      <Project>{2BEECED5-F4E7-455F-91A0-F9187F6A82C8}</Project>
+      <Name>ISHousingMgmt.Domain.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISHousingMgmt.Domain\ISHousingMgmt.Domain.csproj">
+      <Project>{28241EEF-267E-43FB-AFC2-18D140F2F566}</Project>
+      <Name>ISHousingMgmt.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISHousingMgmt.Infrastructure\ISHousingMgmt.Infrastructure.csproj">
+      <Project>{9F202A4E-269A-41CC-9BC4-74F0AFF9B391}</Project>
+      <Name>ISHousingMgmt.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISHousingMgmt.Web\ISHousingMgmt.Web.csproj">
+      <Project>{8362C91D-A19F-4775-8910-A92AFE411FC3}</Project>
+      <Name>ISHousingMgmt.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataAccess\NHibernate\NHibernateTestsClassDiagram.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.PersonsAndRoles.BuildingManager">
+    <Position X="1.5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAABAAAAAQAAAIABAAAAAAAAABAAAA=</HashCode>
+      <FileName>PersonsAndRoles\BuildingManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LegalPerson" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Contractors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.PersonsAndRoles.LegalPerson" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\LegalPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.PersonsAndRoles.Contractor">
+    <Position X="5.25" Y="2.5" Width="2.25" />
+    <AssociationLine Name="LegalPerson" Type="ISHousingMgmt.Domain.PersonsAndRoles.LegalPerson" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.688" Y="2.5" />
+        <Point X="5.688" Y="0.846" />
+        <Point X="3.75" Y="0.846" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAACQAAAAAAAAAAAAAAAQAAAAAAAAEABAAAA=</HashCode>
+      <FileName>PersonsAndRoles\Contractor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LegalPerson" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="RepairServices" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.BuildingMaintenance.RepairService" Collapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuildingMaintenance\RepairService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.PersonsAndRoles.IContractorsRepository">
+    <Position X="5.25" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\IContractorsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.PersonsAndRoles.IBuildingManagersRepository">
+    <Position X="1.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PersonsAndRoles\IBuildingManagersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

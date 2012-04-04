@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Infrastructure.Services.EmailNotifier">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAABhASAAAAAABAEAAgAAAAAAAABAAQAIAAAAgQAAA=</HashCode>
+      <FileName>Services\EmailNotifier.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ISHousingMgmt.Infrastructure.Services.IEmailNotifier" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAABACAAAAAABAAAAgAAAAAAAAAAAQAIAAAAgQAAA=</HashCode>
+      <FileName>Services\IEmailNotifier.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

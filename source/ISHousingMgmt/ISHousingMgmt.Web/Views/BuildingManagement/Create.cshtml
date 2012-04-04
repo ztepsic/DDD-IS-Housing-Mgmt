@@ -1,0 +1,63 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingManagement.CreateModel
+
+@{
+    ViewBag.Title = "Nova stambena zgrada";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true, "Stvaranje nove stambene zgrade nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+	<div>
+		<fieldset>
+			<legend>Podaci o stambenoj zgradi</legend>
+			<div class="field float-left">
+				<div class="editor-label">
+					@Html.LabelFor(m => m.Address.StreetAddress)
+				</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.Address.StreetAddress)
+				</div>
+			</div>
+
+			<div class="field float-left">
+			<div class="editor-label">
+					@Html.LabelFor(m => m.Address.StreetAddressNumber)
+				</div>
+				<div class="editor-field">
+					@Html.EditorFor(m => m.Address.StreetAddressNumber)
+				</div>
+			</div>
+
+			<div class="field float-left">
+				<div class="editor-label">
+						@Html.LabelFor(m => m.Address.City)
+					</div>
+					<div class="editor-field">
+						@Html.DropDownListFor(m => m.Address.City.Id, Model.Address.Cities, "--Odaberi")
+					</div>
+			</div>
+
+			<div class="clear"></div>
+
+			<div style="margin-top: 5px;">
+				@Html.ValidationMessageFor(m => m.Address.StreetAddress)
+				@Html.ValidationMessageFor(m => m.Address.StreetAddressNumber)
+				@Html.ValidationMessageFor(m => m.Address.City)
+			</div>
+
+		</fieldset>
+
+		<p>
+			<input type="submit" value="Spremi" />
+		</p>
+
+	</div>	
+}

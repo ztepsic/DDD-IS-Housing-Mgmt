@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ISHousingMgmt.Domain.Legislature.LandRegistry">
+    <Position X="3.75" Y="3.5" Width="3" />
+    <AssociationLine Name="CadastralParticle" Type="ISHousingMgmt.Domain.Legislature.CadastralParticle" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="6.125" />
+        <Point X="2" Y="6.125" />
+        <Point X="2" Y="6.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Cadastre" Type="ISHousingMgmt.Domain.Legislature.Cadastre" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="5.988" />
+        <Point X="2.375" Y="5.988" />
+        <Point X="2.375" Y="5.569" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAhAoAgAQCAEAAAAAAAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Legislature\LandRegistry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CadastralParticle" />
+      <Property Name="Cadastre" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PartitionSpaces" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Legislature.PartitionSpace">
+    <Position X="8" Y="5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAwAACAAAAAiAAAAAgAAAAAEAICAIAAAAA=</HashCode>
+      <FileName>Legislature\PartitionSpace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Legislature.Cadastre">
+    <Position X="1.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Legislature\Cadastre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.Legislature.CadastralParticle">
+    <Position X="1" Y="6.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAgAAYAIAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Legislature\CadastralParticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ISHousingMgmt.Domain.PersonsAndRoles.Person" Collapsed="true">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAAEAAAYAAQAgAAAQAAAIQAAACAAAAAAAAEAA=</HashCode>
+      <FileName>PersonsAndRoles\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ISHousingMgmt.Domain.Legislature.ICadastresRepository">
+    <Position X="1.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\ICadastresRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.Legislature.ILandRegistriesRepository">
+    <Position X="3.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\ILandRegistriesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.Legislature.IPartitionSpace">
+    <Position X="8" Y="2.25" Width="2" />
+    <AssociationLine Name="Owner" Type="ISHousingMgmt.Domain.PersonsAndRoles.Person">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.732" Y="-0.598" Height="0.162" Width="0.753" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAACAAAAwAACAAAAACAAAAAAAAAAAAAICAIAAAAA=</HashCode>
+      <FileName>Legislature\IPartitionSpace.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LandRegistry" />
+      <Property Name="Owner" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="ISHousingMgmt.Domain.Legislature.IPartitionSpacesRepository">
+    <Position X="5.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Legislature\IPartitionSpacesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

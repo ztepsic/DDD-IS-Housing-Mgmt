@@ -1,0 +1,388 @@
+﻿body {
+    background-color: #5c87b2;
+    font-size: 75%;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+}
+
+a {
+    color: #034af3;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #505abc;
+}
+
+a:hover {
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active {
+    color: #12eb87;
+}
+
+p, ul {
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.horizontal { display: inline; }
+
+dl.horizontal dt,
+dl.horizontal dd {
+	display: inline;
+}
+
+ul.links {
+	margin: 0 0 50px 0;
+	padding: 0;
+	display: block;
+	list-style: none;
+}
+
+ul.links li {
+	float: left;
+	margin: 0;
+	padding: 0 5px 0 0;
+}
+
+dd {
+	margin-bottom: 10px;
+}
+
+small { font-size: 0.8em; }
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1 {
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h1 a,
+h1 a:hover,
+h1 a:visited,
+h1 a:link {
+	color: #fff;
+	text-decoration: none;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+
+#header {
+    position: relative;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+}
+
+#header h1 {
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-size: 32px !important;
+}
+
+#main {
+    background-color: #fff;
+    padding: 10px 0;
+}
+
+
+#footer {
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0;
+    font-size: .9em;
+}
+
+#account-menu {
+	font-size:1.1em;
+	display:block;
+	text-align: right;
+	margin: 10px 0;
+	color: #fff;
+}
+
+#account-menu a:link,
+#account-menu a:visited {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#account-menu a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.field {
+	margin-right: 50px;
+	
+}
+
+fieldset {
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend {
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea  {
+    min-height: 150px;
+    width: 450px;
+}
+
+input[type="text"] {
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+input[type="password"] {
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+  border: solid 1px #e8eef4;
+  border-collapse: collapse;
+  margin: 10px 0;
+  width: 100%;
+}
+
+table td  {
+  padding: 5px;   
+  border: solid 1px #e8eef4;
+}
+
+table th {
+  padding: 6px 5px;
+  text-align: left;
+  background-color: #e8eef4; 
+  border: solid 1px #e8eef4;   
+}
+
+table.bill-items th.quantity,
+table.bill-items td.quantity { width: 7%; }
+
+table.bill-items td.quantity input { width: 100%; }
+
+table.bill-items th.price,
+table.bill-items td.price { width: 25%; }
+
+table.bill-items td.price input { width: 100%; }
+
+table.bill-items th.description,
+table.bill-items td.description { width: 68%; }
+
+table.bill-items td.description input,
+table.bill-items td.description texarea { width: 100%; }
+
+table.bill { border: 0; border-collapse: collapse; table-layout: fixed; width: 100%; }
+table.summary { border: 0; border-collapse: collapse; table-layout: fixed; width: 40%;}
+table.bill th,
+table.summary th,
+table.bill td,
+table.summary td { 
+	background-color: transparent;
+	vertical-align: top;
+	text-align: right;
+	padding: 4px 0 5px 20px;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+table.bill th[scope=row] { font-weight:bold; text-align: left; padding-left: 0; }
+table.summary th[scope=row] { font-weight:bold; text-align: right; padding-left: 0; }
+table.bill th[scope=col],
+table.summary th[scope=col] { font-weight:bold; }
+
+/* MISC  
+----------------------------------------------------------*/
+
+.two-column {
+	width: 325px;
+	margin-right: 5px;
+}
+
+
+#side-menu h3 {
+	font: bold 13px Verdana;
+	color: white;
+	text-transform: uppercase;
+	background-color: #606060;
+	margin-bottom: 2px; 
+	padding: 7px 0 7px 7px;
+}
+
+#side-menu h3 a {
+	color: white;
+	text-decoration: none;
+	display: block;
+}
+
+#side-menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#side-menu ul li {
+	margin: 0px;
+	padding-bottom: 2px;
+}
+
+#side-menu ul li a {
+	font: normal 12px Arial;
+	color: black;
+	background: #E9E9E9;
+	display: block;
+	padding: 5px 0;
+	line-height: 17px;
+	padding-left: 8px;
+	text-decoration: none;
+}
+
+#side-menu ul li a:visited{
+	color: black;
+}
+
+#side-menu h3:hover,
+#side-menu h3.selected,
+#side-menu ul li a:hover,
+#side-menu ul li.selected a {
+	color: white;
+	background: black;
+}
+
+.error {
+    color:Red;
+}
+
+div#title {
+    display:block;
+    float:left;
+    text-align:left;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+    display: block;
+}
+
+.field-validation-error.error-vertical {
+	
+}
+
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field,
+.editor-field {
+    margin:0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}
+
+/* Success, info, notice and error boxes
+-------------------------------------------------------------- */
+
+.error,
+.notice,
+.success, 
+.info 			{ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.notice     { background: #fff6bf; color: #514721; border-color: #ffd324; }
+.success    { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.info 			{ background: #d5edf8; color: #205791; border-color: #92cae4; }
+.error a    { color: #8a1f11; }
+.notice a   { color: #514721; }
+.success a  { color: #264409; }
+.info a			{ color: #205791; }

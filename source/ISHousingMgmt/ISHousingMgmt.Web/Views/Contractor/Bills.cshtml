@@ -1,0 +1,72 @@
+﻿@model ISHousingMgmt.Web.Models.Contractor.BillsModel
+
+@{
+    ViewBag.Title = "Izdani računi";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+	@Html.ActionLink("Izdaj novi račun", "issuebill")
+</p>
+
+<fieldset>
+	<legend>Neplaćeni računi</legend>
+
+<table>
+	<tr>
+		<th>Broj računa</th>
+		<th>Poziv na broj</th>
+		<th>Izdano za</th>
+		<th>Iznos</th>
+		<th>Iznos+PDV</th>
+		<th>Plaćeno</th>
+	</tr>
+@foreach (var bill in Model.UnpaidBills) {
+	<tr>
+		<td>
+			@Html.ActionLink(bill.Id.ToString(), "bill", new { Id = bill.Id })
+		</td>
+		<td>@bill.ReferenceNumber</td>
+		<td>@(bill.To == null ? bill.BuildingName : bill.To.FullName)</td>
+		<td>@bill.TotalAmount</td>
+		<td>@bill.TotalAmountWithTax</td>
+		<td>@(bill.IsPaid ? "Da" : "Ne")</td>
+		
+	</tr>
+}
+</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>Plaćeni računi</legend>
+	<table>
+	<tr>
+		<th>Broj računa</th>
+		<th>Poziv na broj</th>
+		<th>Izdano za</th>
+		<th>Iznos</th>
+		<th>Iznos+PDV</th>
+		<th>Plaćeno</th>
+	</tr>
+@foreach (var bill in Model.PaidBills) {
+	<tr>
+		<td>
+			@Html.ActionLink(bill.Id.ToString(), "bill", new { Id = bill.Id })
+		</td>
+		<td>@bill.ReferenceNumber</td>
+		<td>@(bill.To == null ? bill.BuildingName : bill.To.FullName)</td>
+		<td>@bill.TotalAmount</td>
+		<td>@bill.TotalAmountWithTax</td>
+		<td>@(bill.IsPaid ? "Da" : "Ne")</td>
+		
+	</tr>
+}
+</table>
+
+</fieldset>

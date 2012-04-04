@@ -1,0 +1,14 @@
+﻿@model ISHousingMgmt.Web.Models.LinksModel
+		   
+<div id="side-menu">
+	<h3 class="headerbar">@Html.ActionLink("Naslovnica", "index", "dashboard")</h3>
+	<h3 class="headerbar">@Html.ActionLink("« Predstavnik suvlasnika", "representative", "dashboard")</h3>
+
+	<h3 class="headerbar selected">@Html.ActionLink("Zgrada", "building", new { controller="buildingmanagement",  Id = Model.Id })</h3>
+	<ul>
+	@foreach (var link in Model.Links) {
+		<li @(link.IsSelected ? "class=selected" : "")>@Html.RouteLink(link.Text, link.RouteValues)</li>
+	}
+	</ul>
+
+</div>

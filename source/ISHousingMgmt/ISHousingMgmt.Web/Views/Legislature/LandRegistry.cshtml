@@ -1,0 +1,109 @@
+﻿@model ISHousingMgmt.Web.Models.Legislature.LandRegistryModel
+
+@{
+	ViewBag.Title = "Zemljišna knjiga za katastarsku česticu: " + Model.LandRegistry.CadastralParticle.NumberOfCadastralParticle;
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>Zemljišna knjiga za katastarsku česticu: @Model.LandRegistry.CadastralParticle.NumberOfCadastralParticle</h2>
+
+@if (!Model.LandRegistry.Locked && Model.IsInRole("buildingmanager")) {
+	@Html.ActionLink("Zaključaj zemljišnu knjigu", "locklandregistry", new { id = Model.LandRegistry.Id })
+}
+
+<fieldset>
+    <legend>Katastarska čestica</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.LandRegistry.CadastralParticle.NumberOfCadastralParticle):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.LandRegistry.CadastralParticle.NumberOfCadastralParticle)</div>
+
+		<div class="display-label horizontal" style="margin-left: 100px;"><strong>Katastar:</strong></div>
+		<div class="display-field horizontal">
+			@{
+				var cadastre = string.Format("{0} ({1}), {2}", Model.LandRegistry.CadastralParticle.Cadastre.CadastralDistrict,
+					Model.LandRegistry.CadastralParticle.Cadastre.Mbr, Model.LandRegistry.CadastralParticle.Cadastre.City.Name);
+			}
+			@cadastre
+		</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.LandRegistry.CadastralParticle.SurfaceArea):</strong></div>
+		<div class="display-field horizontal">@Model.LandRegistry.CadastralParticle.SurfaceArea.ToString("0,0.00") m<sup>2</sup></div>
+	</div>
+
+	<div>
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.LandRegistry.CadastralParticle.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.LandRegistry.CadastralParticle.Description)</div>
+	</div>
+
+</fieldset>
+
+<fieldset>
+    <legend>Etaže</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.LandRegistry.TotalSurfaceOfJointOwnershipPartitions):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.LandRegistry.TotalSurfaceOfJointOwnershipPartitions) m<sup>2</sup></div>
+
+		<div class="display-label horizontal" style="margin-left: 50px;"><strong>@Html.LabelFor(m => m.LandRegistry.TotalSurfaceOfOwnedPartitions):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.LandRegistry.TotalSurfaceOfOwnedPartitions) m<sup>2</sup></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.LandRegistry.TotalSurfaceOfPartitionSpaces):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.LandRegistry.TotalSurfaceOfPartitionSpaces) m<sup>2</sup></div>
+	</div>
+
+	<div class="display-label"><strong>Zajedničke etaže:</strong></div>
+	@if (!Model.LandRegistry.Locked && Model.IsInRole("buildingmanager")) { @Html.ActionLink("Dodaj zajedničku etažu", "addpartitionspace", new { id = Model.LandRegistry.Id }) }
+	<table>
+		<tr>
+			<th>Redni broj</th>
+			<th>Površina [m<sup>2</sup>]</th>
+			<th>Opis</th>
+		</tr>
+	
+	@foreach (var partitionSpaceListModel in Model.LandRegistry.JointOwnershipPartitionSpaces) {
+		<tr>
+			<td>@Html.ActionLink(partitionSpaceListModel.OrdinalNumber.ToString(), "partitionspace", new { id = partitionSpaceListModel.Id })</td>
+			<td>@partitionSpaceListModel.SurfaceArea.ToString("0,0.00")</td>
+			<td>@partitionSpaceListModel.Description</td>
+		</tr>
+ }
+	</table>
+
+	<div class="display-label"><strong>Vlasničke etaže:</strong></div>
+	@if (!Model.LandRegistry.Locked && Model.IsInRole("buildingmanager")) { @Html.ActionLink("Dodaj vlasničku etažu", "addpartitionspace", new { id = Model.LandRegistry.Id, owned = "owned" }) }
+	<table>
+		<tr>
+			<th>Redni broj</th>
+			<th>Površina [m<sup>2</sup>]</th>
+			<th>Omjer</th>
+			<th>Opis</th>
+		</tr>
+	
+	@foreach (var partitionSpaceListModel in Model.LandRegistry.OwnedPartitionSpaces) {
+		<tr>
+			<td>@Html.ActionLink(partitionSpaceListModel.OrdinalNumber.ToString(), "partitionspace", new { id = partitionSpaceListModel.Id })</td>
+			<td>@partitionSpaceListModel.SurfaceArea.ToString("0,0.00")</td>
+			<td>@partitionSpaceListModel.ShareOfTotalOwnership.ToString("0.0000")</td>
+			<td>@partitionSpaceListModel.Description</td>
+		</tr>
+ }
+	</table>
+
+</fieldset>
+

@@ -1,0 +1,146 @@
+﻿@model ISHousingMgmt.Web.Models.Dashboard.IndexModel
+
+@{
+	ViewBag.Title = "Naslovnica";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu", Model)
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@if (Model.IsInRole("contractor")) {
+	<fieldset>
+	<legend>Izvođač radova</legend>
+
+<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+@foreach (var maintenance in Model.Maintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "maintenance", new { controller="contractor", Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+@if (Model.Maintenances.Count > 0) {
+<p>
+	@Html.ActionLink("Više", "contractor")
+</p>
+}
+
+</fieldset>
+}
+
+@if (Model.IsInRole("buildingmanager")) {
+	<fieldset>
+	<legend>Upravitelj</legend>
+
+<table>
+	<tr>
+		<th>Zgrada</th>
+		<th>Opis</th>
+		<th>Površina [m<sup>2</sup>]</th>
+	</tr>
+	@foreach (var building in Model.ManagerBuildings) {
+		<tr>
+			<td>
+				@Html.ActionLink(building.Address.ToString(),
+					"building",
+					new { controller = "buildingmanagement", id = building.Id })
+			</td>
+			<td>@building.Description</td>
+			<td>@Html.DisplayFor(m => building.SurfaceArea)</td>
+		</tr>
+	}
+</table>
+
+@if (Model.ManagerBuildings.Count > 0) {
+<p>
+	@Html.ActionLink("Više", "representative")
+</p>
+}
+
+</fieldset>
+}
+
+@if (Model.IsInRole("representative")) {
+	<fieldset>
+	<legend>Predstavnik suvlasnika</legend>
+
+<table>
+	<tr>
+		<th>Zgrada</th>
+		<th>Opis</th>
+		<th>Površina [m<sup>2</sup>]</th>
+	</tr>
+	@foreach (var building in Model.RepresentativeBuildings) {
+		<tr>
+			<td>
+				@Html.ActionLink(building.Address.ToString(),
+					"building",
+						 new { controller = "buildingmanagement", id = building.Id })
+			</td>
+			<td>@building.Description</td>
+			<td>@Html.DisplayFor(m => building.SurfaceArea)</td>
+		</tr>
+	}
+</table>
+
+@if (Model.RepresentativeBuildings.Count > 0) {
+<p>
+	@Html.ActionLink("Više", "representative")
+</p>
+}
+
+</fieldset>
+}
+
+
+@if (Model.IsInRole("owner")) {
+	<fieldset>
+	<legend>Suvlasnik</legend>
+
+<table>
+	<tr>
+		<th>Stan u zgradi</th>
+		<th>Opis stana</th>
+		<th>Površina stana [m<sup>2</sup>]</th>
+	</tr>
+	@foreach (var apartment in Model.Apartments) {
+		<tr>
+			<td>
+				@Html.ActionLink(apartment.Building.Address.ToString(), "apartment", new { controller ="owner", id = apartment.PartitionSpace.Id})
+			</td>
+			<td>
+				@apartment.PartitionSpace.Description
+			</td>
+			<td>@Html.DisplayFor(m => apartment.PartitionSpace.SurfaceArea)</td>
+		</tr>
+	}
+</table>
+
+@if (Model.Apartments.Count > 0) {
+<p>
+	@Html.ActionLink("Više", "owner")
+</p>
+}
+
+</fieldset>
+}
+
+
+

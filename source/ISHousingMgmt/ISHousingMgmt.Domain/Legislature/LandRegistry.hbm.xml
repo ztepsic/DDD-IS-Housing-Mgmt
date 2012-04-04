@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" namespace="ISHousingMgmt.Domain.Legislature">
+	<class name="LandRegistry" table="LandRegistries" schema="Legislature" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<version name="Version" />
+
+		<component name="CadastralParticle" class="CadastralParticle" access="nosetter.camelcase">
+			<many-to-one name="Cadastre" column="CadastreId" class="Cadastre" access="nosetter.camelcase" not-null="true" />
+			<property name="NumberOfCadastralParticle" access="nosetter.camelcase" not-null="true" />
+			<property name="SurfaceArea" access="nosetter.camelcase" not-null="true" />
+			<property name="Description" access="nosetter.camelcase" not-null="true" />
+		</component>
+
+		<set name="PartitionSpaces" table="PartitionSpaces" schema="Legislature" access="field.camelcase" 
+				 cascade="all-delete-orphan" inverse="true">
+			<key column="LandRegistryId" />
+			<one-to-many class="PartitionSpace" />
+		</set>
+
+		<property name="Locked" />
+
+	</class>
+</hibernate-mapping>

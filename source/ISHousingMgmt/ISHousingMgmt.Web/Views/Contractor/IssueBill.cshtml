@@ -1,0 +1,211 @@
+﻿@model ISHousingMgmt.Web.Models.Contractor.IssueBillModel
+
+@{
+	ViewBag.Title = "Izdavanje računa";
+	int billItemsCount = 1;
+	if (Model.BillItems != null) {
+		billItemsCount = Model.BillItems.Length;
+	}
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/public/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/jquery.global.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/globinfo/jquery.glob." + Culture + ".js")" type="text/javascript"></script>
+<script src="@Url.Content("~/public/js/globalization/jquery.validation.global.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function () {
+		$.global.preferCulture("@Culture");
+	});
+</script>
+
+<script type="text/javascript">
+	$(function () {
+		var itemsCount = @billItemsCount;
+		function createRow() { return $(document.createElement("tr")); }
+		function createColumn() { return $(document.createElement("td")); }
+		function createInput() {
+			var input = $(document.createElement("input"));
+			input.addClass("text-box single-line");
+			input.attr("data-val", "true");
+			input.attr("type", "text");
+			input.val("");
+
+			return input;
+		}
+
+		function createQunatityInput(itemsCount){
+			var input = createInput();
+			input.attr("data-val-number" ,"The field Količina must be a number.");
+			input.attr("data-val-required", "The Količina field is required.");
+			input.attr("id", "BillItems_" + itemsCount + "__Quantity");
+			input.attr("name", "BillItems[" + itemsCount + "].Quantity");
+
+			return input;
+		}
+
+		function createPriceInput(itemsCount) {
+			var input = createInput();
+			input.attr("data-val-number" ,"The field Cijena must be a number.");
+			input.attr("data-val-required", "The Cijena field is required.");
+			input.attr("id", "BillItems_" + itemsCount + "__Price");
+			input.attr("name", "BillItems[" + itemsCount + "].Price");
+
+			return input;
+		}
+
+		function createDescriptionInput(itemsCount){
+			var input = createInput();
+			input.attr("data-val-required", "The Opis field is required.");
+			input.attr("id", "BillItems_" + itemsCount + "__Description");
+			input.attr("name", "BillItems[" + itemsCount + "].Description");
+
+			return input;
+		}
+
+		function createValidationRow(itemsCount){
+			var row = createRow();
+			var column = createColumn();
+			row.append(column);
+			column.attr("colspan", "3");
+
+			var span = $(document.createElement("span"));
+			span.addClass("field-validation-valid");
+			span.attr("data-valmsg-for", "BillItems[" + itemsCount + "].Quantity");
+			span.attr("data-valmsg-replace", "true");
+			column.append(span);
+
+			span = $(document.createElement("span"));
+			span.addClass("field-validation-valid");
+			span.attr("data-valmsg-for", "BillItems[" + itemsCount + "].Price");
+			span.attr("data-valmsg-replace", "true");
+			column.append(span);
+
+			span = $(document.createElement("span"));
+			span.addClass("field-validation-valid");
+			span.attr("data-valmsg-for", "BillItems[" + itemsCount + "].Description");
+			span.attr("data-valmsg-replace", "true");
+			column.append(span);
+
+			return row;
+		}
+
+		$("#add-item").click(function (event) {
+			event.preventDefault();
+
+			var row = createRow();
+			var quantityColumn = createColumn().addClass("quantity").append(createQunatityInput(itemsCount));
+			row.append(quantityColumn);
+
+			var priceColumn = createColumn().addClass("price").append(createPriceInput(itemsCount));
+			row.append(priceColumn);
+
+			var descriptionColumn = createColumn().addClass("description").append(createDescriptionInput(itemsCount));
+			row.append(descriptionColumn);
+
+			$(".bill-items tbody").children().last().after(row);
+			row.after(createValidationRow(itemsCount));
+
+			itemsCount++;
+
+			$.validator.unobtrusive.parse($("form"));
+//			$.validator.unobtrusive.parse();
+
+		});
+
+		$("#del-item").click(function(event){
+			event.preventDefault();
+			var rows = $(".bill-items tbody").children();
+			var lastRow = null;
+			var size = rows.size();
+			if(size > 3){
+				lastRow = $(rows[size-1]);
+				lastRow.remove();
+				lastRow = $(rows[size-2]);
+				lastRow.remove();
+			}
+		});
+
+		
+
+	});
+
+</script>
+
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true, "Izdavanje računa nije uspjelo. Ispravite pogreške i pokušajte ponovno.")
+	<div>
+		<fieldset>
+			<legend>Podaci za račun</legend>
+
+			<div style="margin: 10px 0;">
+				<div class="editor-label"><strong>@Html.LabelFor(m => m.UnbilledMaintance):</strong></div>
+				<div class="editor-field">
+					@Html.DropDownListFor(m => m.UnbilledMaintance, Model.UnbilledMaintances, "--Odaberi")
+					@Html.ValidationMessageFor(m => m.UnbilledMaintance)
+				</div>
+			</div>
+
+			<div style="margin: 10px 0;">
+				<div class="editor-label"><strong>@Html.LabelFor(m => m.PaymentDescription):</strong></div>
+				<div class="editor-field">
+					@Html.TextAreaFor(m => m.PaymentDescription)
+					@Html.ValidationMessageFor(m => m.PaymentDescription)
+				</div>
+			</div>
+
+			<h3>Stavke računa</h3>
+			<a id="add-item" href="#">Dodaj stavku</a>
+			<a id="del-item" href="#">Obriši zadnju stavku</a>
+			<table class="bill-items">
+				<tr>
+					<th class="quantity">Količina</th>
+					<th class="price">Cijena kom(bez PDV-a)</th>
+					<th class="description">Opis</th>
+				</tr>
+				@if (Model.BillItems != null) {
+		for (int i = 0; i < Model.BillItems.Length; i++) {
+					<tr>
+						<td class="quantity">@Html.EditorFor(m => m.BillItems[i].Quantity)</td>
+						<td class="price">@Html.EditorFor(m => m.BillItems[i].Price)</td>
+						<td class="description">@Html.EditorFor(m => m.BillItems[i].Description)</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							@Html.ValidationMessageFor(m => m.BillItems[i].Quantity)
+							@Html.ValidationMessageFor(m => m.BillItems[i].Price)
+							@Html.ValidationMessageFor(m => m.BillItems[i].Description)
+						</td>
+					</tr>
+		}
+	} else {
+					<tr>
+					<td class="quantity">@Html.EditorFor(m => m.BillItems[0].Quantity)</td>
+					<td class="price">@Html.EditorFor(m => m.BillItems[0].Price)</td>
+					<td class="description">@Html.EditorFor(m => m.BillItems[0].Description)</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						@Html.ValidationMessageFor(m => m.BillItems[0].Quantity)
+						@Html.ValidationMessageFor(m => m.BillItems[0].Price)
+						@Html.ValidationMessageFor(m => m.BillItems[0].Description)
+					</td>
+				</tr>
+	}
+			</table>
+
+			<p>
+				<input type="submit" value="Izdaj račun" />
+			</p>
+
+		</fieldset>
+
+	</div>	
+}

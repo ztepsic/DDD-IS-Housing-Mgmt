@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ISHousingMgmt.Domain" 
+									 namespace="ISHousingMgmt.Domain.MembershipAndRoles">
+	<class name="User" table="Users" discriminator-value="User" schema="MembershipAndRoles" >
+		<id name="Id">
+			<generator class="native" />
+		</id>
+		<discriminator column="OType" type="String" />
+		<version name="Version" />
+
+		<property name="UserName" not-null="true" unique="true"/>
+		<property name="Password" access="nosetter.camelcase" not-null="true" />
+		<property name="PasswordFormat" access="nosetter.camelcase" not-null="true" />
+		<property name="PasswordSalt" access="nosetter.camelcase" />
+		<property name="Email" unique="true" />
+		<property name="Comment" />
+		<property name="CreationDate" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+		<property name="IsApproved" not-null="true" />
+		<property name="IsLockedOut" access="nosetter.camelcase" not-null="true" />
+		<property name="PasswordQuestion" access="nosetter.camelcase" />
+		<property name="passwordAnswer" column="PasswordAnswer" access="field.camelcase" />
+		<property name="LastActivityDate" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+		<property name="LastLoginDate" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+		<property name="LastPasswordChangedDate" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+		<property name="LastLockoutDate" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+		<property name="FailedPasswordAttemptCount" access="nosetter.camelcase" not-null="true" />
+		<property name="FailedPasswordAnswerAttemptCount" access="nosetter.camelcase" not-null="true" />
+		<property name="FailedPasswordAttemptWindowStart" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+		<property name="FailedPasswordAnswerAttemptWindowStart" type="ISHousingMgmt.Infrastructure.DataAccess.NHibernate.DateTimeUserType, ISHousingMgmt.Infrastructure" access="field.camelcase" not-null="true" />
+
+		<set name="Roles" table="UserRoles" schema="MembershipAndRoles" access="field.camelcase"
+				 cascade="save-update" >
+			<key column="UserId" />
+			<many-to-many class="Role" column="RoleId" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

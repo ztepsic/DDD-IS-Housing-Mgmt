@@ -1,0 +1,105 @@
+﻿@model ISHousingMgmt.Web.Models.Legislature.PartitionSpaceModel
+
+@{
+	ViewBag.Title = Model.PartitionSpace.IsOwnedPartitionSpace ? "Vlasnička etaža: " : "Zajednička etaža: ";
+	ViewBag.Title += Model.PartitionSpace.RegistryNumber;
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Posjedovnica</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.CadastralParticle.NumberOfCadastralParticle):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.CadastralParticle.NumberOfCadastralParticle)</div>
+		</div>
+
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>Katastar:</strong></div>
+			<div class="display-field horizontal">
+				@{
+					var cadastre = string.Format("{0} ({1}), {2}", Model.PartitionSpace.CadastralParticle.Cadastre.CadastralDistrict,
+						Model.PartitionSpace.CadastralParticle.Cadastre.Mbr, Model.PartitionSpace.CadastralParticle.Cadastre.City.Name);
+				}
+				@cadastre
+			</div>
+		</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.CadastralParticle.SurfaceArea):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.CadastralParticle.SurfaceArea) m<sup>2</sup></div>
+	</div>
+
+	<div>
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.CadastralParticle.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.CadastralParticle.Description)</div>
+	</div>
+
+</fieldset>
+
+<fieldset>
+    <legend>Vlastovnica</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.RegistryNumber):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.RegistryNumber)</div>
+		</div>
+
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.OrdinalNumber)</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.OrdinalNumber)</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.SurfaceArea):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.SurfaceArea) m<sup>2</sup></div>
+		</div>
+
+		@if (Model.PartitionSpace.IsOwnedPartitionSpace) {
+		<div class="float-left two-column">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.ShareOfTotalOwnership)</strong></div>
+			<div class="display-field horizontal">@Model.PartitionSpace.ShareOfTotalOwnership.ToString("0.0000")</div>
+		</div>
+		}
+		
+		<div class="clear"></div>
+		
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.PartitionSpace.Description)</div>
+	</div>
+
+	@if (Model.PartitionSpace.IsOwnedPartitionSpace) {
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.PartitionSpace.Owner):</strong></div>
+		<div class="display-field horizontal">
+			@(string.Format("{0} (OIB: {1}),  {2}", Model.PartitionSpace.Owner.FullName, Model.PartitionSpace.Owner.Oib, Model.PartitionSpace.Owner.Address.ToString()))
+			@if(Model.IsInRole("representative") || Model.IsInRole("buildingmanager")){
+				@Html.ActionLink("[Promijeni]", "changeowner", new { Id = Model.PartitionSpace.Id })
+			}
+		</div>
+	</div>
+	}
+</fieldset>

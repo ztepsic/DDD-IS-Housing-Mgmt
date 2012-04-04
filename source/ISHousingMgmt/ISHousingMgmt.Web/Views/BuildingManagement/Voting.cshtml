@@ -1,0 +1,108 @@
+﻿@model ISHousingMgmt.Web.Models.BuildingManagement.VotingModel
+
+@{
+    ViewBag.Title = "Rad uprave: " + Model.Voting.Subject;
+}
+
+@section SideMenu {
+	@if(Model.CurrentRole.Equals("owner")){
+	 @Html.Partial("OwnerSideMenu", Model.Links)
+	} else if(Model.CurrentRole.Equals("buildingmanager")){
+		@Html.Partial("ManagerSideMenu", Model.Links)
+	} else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+	} else {
+		@Html.Partial("MainMenu")
+	}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Podaci o radu uprave</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Za zgradu:</strong></div>
+			<div class="display-field horizontal">@Model.Voting.Building.Address.ToString()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.AdministrationJobsType):</strong></div>
+			<div class="display-field horizontal">@Model.Voting.GetAdministrationJobsTypeName()</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.Subject):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.Voting.Subject)</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.Voting.Description)</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.StartDateTime):</strong></div>
+			<div class="display-field horizontal">@Model.Voting.StartDateTime.ToShortDateString()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.EndDateTime):</strong></div>
+			<div class="display-field horizontal">@Model.Voting.EndDateTime.ToShortDateString()</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.IsFinished):</strong></div>
+			<div class="display-field horizontal">@(Model.Voting.IsFinished ? "Da" : "Ne")</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.IsAccepted):</strong></div>
+			<div class="display-field horizontal">@(Model.Voting.IsAccepted ? "Da" : "Ne")</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.NumberOfPositiveVotes):</strong></div>
+			<div class="display-field horizontal">@Model.Voting.NumberOfPositiveVotes</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Voting.NumberOfNegativeVotes):</strong></div>
+			<div class="display-field horizontal">@Model.Voting.NumberOfNegativeVotes</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Glasalo:</strong></div>
+			<div class="display-field horizontal">@Model.Voting.OwnerVotesCount od @Model.Voting.NumberOfOwners</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	@if (Model.CurrentRole == "owner" && !Model.IsUserVoted && !Model.Voting.IsFinished) {
+		@Html.ActionLink("Glasaj", "vote", new { Id = Model.Voting.Id })
+	}
+	  
+</fieldset>

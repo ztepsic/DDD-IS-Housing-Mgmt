@@ -1,0 +1,28 @@
+﻿@model ISHousingMgmt.Web.Models.Finances.ReservePeriodsModel
+
+@{
+	ViewBag.Title = "Mjeseci za koje su izdani računi za pričuvu zgrade: " + Model.Reserve.Building.Address.ToString();
+}
+
+@section SideMenu {
+ @if (Model.CurrentRole.Equals("buildingmanager")) {
+		@Html.Partial("ManagerSideMenu", Model.Links)
+ } else if (Model.CurrentRole.Equals("representative")) {
+	 @Html.Partial("RepresentativeSideMenu", Model.Links)
+ } else {
+		@Html.Partial("MainMenu")
+ }
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+	<legend>Mjeseci</legend>
+
+	<ul>
+	@foreach (var period in Model.Periods) {
+		<li>@Html.ActionLink(period.ToString("MM. yyyy."), "reservebills", new { Id = Model.Reserve.Building.Id, Date = period.ToString("MM-yyyy") })</li>
+	}
+	</ul>
+
+</fieldset>

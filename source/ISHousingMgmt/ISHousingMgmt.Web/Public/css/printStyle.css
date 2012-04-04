@@ -1,0 +1,195 @@
+﻿body {
+	width: 940px;
+    background-color: #fff;
+    font-size: 75%;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    margin: 10px 10px;
+    padding: 0;
+    color: #000;
+}
+
+
+p, ul {
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.horizontal { display: inline; }
+
+dl.horizontal dt,
+dl.horizontal dd {
+	display: inline;
+}
+
+dd {
+	margin-bottom: 10px;
+}
+
+small { font-size: 0.8em; }
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.two-column {
+	width: 325px;
+	margin-right: 5px;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1 {
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+
+
+.field {
+	margin-right: 50px;
+	
+}
+
+fieldset {
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend {
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea  {
+    min-height: 150px;
+    width: 450px;
+}
+
+input[type="text"] {
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+input[type="password"] {
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+  border: solid 1px #e8eef4;
+  border-collapse: collapse;
+  margin: 10px 0;
+  width: 100%;
+}
+
+table td  {
+  padding: 5px;   
+  border: solid 1px #e8eef4;
+}
+
+table th {
+  padding: 6px 5px;
+  text-align: left;
+  background-color: #e8eef4; 
+  border: solid 1px #e8eef4;   
+}
+
+table.bill-items th.quantity,
+table.bill-items td.quantity { width: 7%; }
+
+table.bill-items td.quantity input { width: 100%; }
+
+table.bill-items th.price,
+table.bill-items td.price { width: 25%; }
+
+table.bill-items td.price input { width: 100%; }
+
+table.bill-items th.description,
+table.bill-items td.description { width: 68%; }
+
+table.bill-items td.description input,
+table.bill-items td.description texarea { width: 100%; }
+
+table.bill { border: 0; border-collapse: collapse; table-layout: fixed; width: 100%; }
+table.summary { border: 0; border-collapse: collapse; table-layout: fixed; width: 40%;}
+table.bill th,
+table.summary th,
+table.bill td,
+table.summary td { 
+	background-color: transparent;
+	vertical-align: top;
+	text-align: right;
+	padding: 4px 0 5px 20px;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+table.bill th[scope=row] { font-weight:bold; text-align: left; padding-left: 0; }
+table.summary th[scope=row] { font-weight:bold; text-align: right; padding-left: 0; }
+table.bill th[scope=col],
+table.summary th[scope=col] { font-weight:bold; }
+
+
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field,
+.editor-field {
+    margin:0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}

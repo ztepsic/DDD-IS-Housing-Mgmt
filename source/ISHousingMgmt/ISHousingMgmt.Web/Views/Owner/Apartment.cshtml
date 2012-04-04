@@ -1,0 +1,190 @@
+﻿@model ISHousingMgmt.Web.Models.Owner.ApartmentModel
+
+@{
+	var apartment = Model.Apartment;
+	ViewBag.Title = "Stan " + apartment.PartitionSpace.RegistryNumber + ": " + apartment.Building.Address.ToString();
+}
+
+@section SideMenu {
+	@Html.Partial("OwnerSideMenu", Model.Links)
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Informacije o zgradi</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.CadastralParticle.NumberOfCadastralParticle):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.PartitionSpace.CadastralParticle.NumberOfCadastralParticle)</div>
+		</div>
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Katastar:</strong></div>
+			<div class="display-field horizontal">
+			@{
+				var cadastre = string.Format("{0} ({1}), {2}", Model.Apartment.PartitionSpace.CadastralParticle.Cadastre.CadastralDistrict,
+					Model.Apartment.PartitionSpace.CadastralParticle.Cadastre.Mbr, Model.Apartment.PartitionSpace.CadastralParticle.Cadastre.City.Name);
+			}
+			@cadastre
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Adresa:</strong></div>
+			<div class="display-field horizontal">@apartment.Building.Address.ToString()</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.CadastralParticle.SurfaceArea):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.PartitionSpace.CadastralParticle.SurfaceArea) m<sup>2</sup></div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.CadastralParticle.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.PartitionSpace.CadastralParticle.Description)</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Predstavnik suvlasnika:</strong></div>
+			<div class="display-field horizontal">
+				@if (apartment.Building.RepresentativeOfPartOwners != null) {
+					@Html.ActionLink(apartment.Building.RepresentativeOfPartOwners.FullName, "index", new { controller = "person", id = apartment.Building.RepresentativeOfPartOwners.Id })
+	}
+			</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Upravitelj:</strong></div>
+			<div class="display-field horizontal">
+				@Html.ActionLink(apartment.Building.BuildingManagerLegalPerson.FullName, "index", new { controller = "person", id = apartment.Building.BuildingManagerLegalPerson.Id })
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.Building.ReserveCoefficient):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.Building.ReserveCoefficient) kn/m<sup>2</sup></div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.Building.ReserveMoney):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.Building.ReserveMoney) kn</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label"><strong>Rad uprave:</strong></div>
+		<table>
+			<tr>
+				<th>Tema</th>
+				<th>Vrsta</th>
+				<th>Početak</th>
+				<th>Kraj</th>
+				<th>Glasalo</th>
+				<th>Završeno</th>
+				<th>Prihvaćeno</th>
+			</tr>
+	
+			@foreach (var voting in Model.Votings) {
+			<tr>
+				<td>@Html.ActionLink(voting.Subject, "voting", new { controller = "buildingmanagement", Id = voting.Id })</td>
+				<td>@voting.GetAdministrationJobsTypeName()</td>
+				<td>@voting.StartDateTime.ToShortDateString()</td>
+				<td>@voting.EndDateTime.ToShortDateString()</td>
+				<td>@voting.Voted / @voting.NumberOfOwners</td>
+				<td>@(voting.IsFinished ? "Da" : "Ne")</td>
+				<td>@(voting.IsAccepted ? "Da" : "Ne")</td>
+			</tr>
+   }
+		</table>
+
+		@Html.ActionLink("Više ...", "votings", new { controller = "buildingmanagement", Id = Model.Apartment.Building.Id })
+
+	</div>
+
+	<div class="display-label"><strong>Zajedničke etaže:</strong></div>
+	<table>
+		<tr>
+			<th>Opis</th>
+			<th>Površina [m<sup>2</sup>]</th>
+		</tr>
+	
+	@foreach (var partitionSpaceListModel in Model.Apartment.Building.LandRegistry.JointOwnershipPartitionSpaces) {
+		<tr>
+			<td>@partitionSpaceListModel.Description</td>
+			<td>@partitionSpaceListModel.SurfaceArea.ToString("0,0.00")</td>
+		</tr>
+ }
+	</table>
+
+</fieldset>
+
+<fieldset>
+    <legend>Informacije o stanu</legend>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.RegistryNumber):</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.PartitionSpace.RegistryNumber)</div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.OrdinalNumber)</strong></div>
+			<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.PartitionSpace.OrdinalNumber)</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.SurfaceArea):</strong></div>
+			<div class="display-field horizontal">@Model.Apartment.PartitionSpace.SurfaceArea.ToString("0,0.00") m<sup>2</sup></div>
+		</div>
+
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.ShareOfTotalOwnership)</strong></div>
+			<div class="display-field horizontal">@apartment.PartitionSpace.ShareOfTotalOwnership.ToString("0.0000")</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="display-label horizontal"><strong>@Html.LabelFor(m => m.Apartment.PartitionSpace.Description):</strong></div>
+		<div class="display-field horizontal">@Html.DisplayFor(m => m.Apartment.PartitionSpace.Description)</div>
+	</div>
+
+	<div style="margin: 10px 0;">
+		<div class="two-column float-left">
+			<div class="display-label horizontal"><strong>Uobičajena cijena pričuve:</strong></div>
+			<div class="display-field horizontal">
+				@{
+					var price = apartment.Building.ReserveCoefficient * apartment.PartitionSpace.SurfaceArea;
+				}
+				@(price.ToString("0,0.00")) kn
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+</fieldset>

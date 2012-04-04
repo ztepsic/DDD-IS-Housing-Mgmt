@@ -1,0 +1,88 @@
+﻿@model ISHousingMgmt.Web.Models.Contractor.IndexModel
+
+@{
+    ViewBag.Title = "Kvarovi";
+}
+
+@section SideMenu {
+	@Html.Partial("MainMenu")
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+	<legend>Novi kvarovi</legend>
+
+<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+@foreach (var maintenance in Model.ActiveMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "maintenance", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>Kvarovi koji čekaju na potvrdu</legend>
+
+<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+@foreach (var maintenance in Model.InConfirmationMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "maintenance", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>
+
+<fieldset>
+	<legend>Riješeni kvarovi</legend>
+	<table>
+	<tr>
+		<th>Kvar</th>
+		<th>Zgrada</th>
+		<th>Vrsta kvara</th>
+		<th>Hitnost</th>
+		<th>Status</th>
+	</tr>
+	@foreach (var maintenance in Model.CompletedMaintenances) {
+	<tr>
+		<td>
+			@Html.ActionLink(maintenance.MaintenanceRequest.Subject, "maintenance", new { Id = maintenance.Id })
+		</td>
+		<td>@maintenance.Building.Address</td>
+		<td>@maintenance.ServiceType.Name</td>
+		<td>@maintenance.UrgencyName()</td>
+		<td>@maintenance.GetStatusOfMaintenanceName()</td>
+	</tr>
+}
+</table>
+
+</fieldset>
